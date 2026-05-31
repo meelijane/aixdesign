@@ -25,7 +25,15 @@ function useKeyboard(handlers: Record<string, () => void>) {
 }
 
 export default function App() {
-  const [index, setIndex] = useState(0);
+  // Read initial slide from URL hash (e.g. #5 or #s1-iteration)
+  const [index, setIndex] = useState(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return 0;
+    const num = parseInt(hash, 10);
+    if (!isNaN(num) && num >= 0 && num < SLIDES.length) return num;
+    const byId = SLIDES.findIndex((s) => s.id === hash);
+    return byId >= 0 ? byId : 0;
+  });
   const [showNotes, setShowNotes] = useState(false);
   const [showOverview, setShowOverview] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,6 +44,24 @@ export default function App() {
   const total = SLIDES.length;
   const hasModal = !!slide.modal;
   const palette = slide.palette ?? "color";
+
+  // Sync URL hash with current slide
+  useEffect(() => {
+    window.location.hash = `${index}`;
+  }, [index]);
+
+  // Listen for hash changes (back/forward button)
+  useEffect(() => {
+    const onHash = () => {
+      const hash = window.location.hash.slice(1);
+      const num = parseInt(hash, 10);
+      if (!isNaN(num) && num >= 0 && num < SLIDES.length && num !== index) {
+        setIndex(num);
+      }
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, [index]);
 
   // ── Navigation with fade ────────────────────────────────────────────────
   const goTo = useCallback(
@@ -362,19 +388,6 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
               aria-hidden
             />
             <Pixel src={block.src} alt={block.alt} {...(block.pixel ?? {})} />
-            {/* Animated voice indicator for voice-related screenshots */}
-            {block.src.includes("voice") && (
-              <div className="modal-voice-indicator">
-                <span className="voice-bar" />
-                <span className="voice-bar" />
-                <span className="voice-bar" />
-                <span className="voice-bar" />
-                <span className="voice-bar" />
-                <span className="voice-bar" />
-                <span className="voice-bar" />
-                <span className="voice-label">Listening…</span>
-              </div>
-            )}
           </div>
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>
