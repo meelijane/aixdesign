@@ -391,7 +391,7 @@ export const SLIDES: Slide[] = [
       heading: "Eat your own dogfood,\nsee how it tastes",
       bullets: [
         "We are culturally hard-wired to use our own tools — this is good and bad",
-        "Spending more time with customers is critically important — and helps you identify the gaps",
+        "Spending more time with customers is critically important & helps you identify the gaps",
         "You don't want customers doing your QA",
       ],
       modalBullet: 0,
