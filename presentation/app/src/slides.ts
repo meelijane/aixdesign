@@ -402,16 +402,12 @@ export const SLIDES: Slide[] = [
       tag: "DOGFOOD",
       blocks: [
         {
-          kind: "flow",
-          stages: [
-            { label: "TRIGGER", sub: "Jira issue created" },
-            { label: "FETCH", sub: "Confluence context" },
-            { label: "DRAFT", sub: "AI summary" },
-            { label: "REVIEW", sub: "Slack approval" },
-            { label: "SHIP", sub: "Comment + label" },
-          ],
+          kind: "image",
+          src: "/studio.png",
+          alt: "Atlassian Studio — agent builder canvas",
+          caption: "We build Studio. We use Studio. Every gap we feel, our customers feel ten times worse.",
+          pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 },
         },
-        { kind: "text", body: "We build Studio. We use Studio. Every gap we feel, our customers feel ten times worse. The team has wired half its rituals through agents built on Studio itself." },
       ],
       footer: "Source: Atlassian Studio · internal builds",
     },
