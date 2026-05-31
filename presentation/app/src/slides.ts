@@ -133,10 +133,10 @@ const fieldBg: Partial<AsciiProps> = {
   charset: "light",
   vignette: 0.5,
 };
-// Colored field — uses the slide's palette while still on the dark CRT background.
-const coloredFieldBg = (index: number, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
+// Colored field — uses green phosphor tones on the dark CRT background.
+const coloredFieldBg = (_index: number, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   ...fieldBg,
-  sourceColors: paletteFor(index),
+  sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM],
   colorMode: "source",
   backgroundColor: PHOSPHOR_BG,
   backgroundMode: "solid-black",
@@ -162,13 +162,13 @@ const phosphorImageAscii = (src: string, extra: Partial<AsciiProps> = {}): Parti
   vignette: 0.5,
   ...extra,
 });
-// Colored image-driven ascii — same as phosphor but with the slide's palette.
+// Image-driven ascii — uses green phosphor tones (matching the modal palette).
 const coloredImageAscii = (
   src: string,
-  index: number,
+  _index: number,
   extra: Partial<AsciiProps> = {},
 ): Partial<AsciiProps> =>
-  phosphorImageAscii(src, { sourceColors: paletteFor(index), ...extra });
+  phosphorImageAscii(src, { ...extra });
 // Lobby/overview/summary list of the five section names.
 const FIVE_SECTIONS = [
   "Garbage in, garbage out",
