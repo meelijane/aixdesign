@@ -988,28 +988,13 @@
   overflow: hidden;
   min-height: 280px;
 }
-.modal-image-fallback {
-  /* DEBUG: hidden so we can verify the WebGL canvas is doing the work */
-  display: none;
+.modal-image-crt {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  /* Phosphor monochrome via CSS while the shader warms up */
-  filter:
-    grayscale(1) brightness(1.1) contrast(1.4)
-    sepia(1) hue-rotate(85deg) saturate(6);
-  opacity: 0.85;
-  z-index: 0;
-}
-.modal-image-canvas canvas,
-.modal-image-canvas > div {
-  position: absolute !important;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 1;
+  object-fit: cover;
+  filter: grayscale(1) sepia(1) saturate(3) hue-rotate(85deg) brightness(0.7) contrast(1.3);
 }
 .modal-image figcaption {
   font-size: 11px;

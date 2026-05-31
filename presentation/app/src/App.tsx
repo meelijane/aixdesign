@@ -394,12 +394,10 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
         <figure className="modal-image">
           <div className="modal-image-canvas">
             <img
-              className="modal-image-fallback"
+              className="modal-image-crt"
               src={block.src}
               alt={block.alt ?? ""}
-              aria-hidden
             />
-            <Pixel src={block.src} alt={block.alt} {...(block.pixel ?? {})} />
           </div>
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>
