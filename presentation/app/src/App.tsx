@@ -47,21 +47,28 @@ export default function App() {
 
   // Sync URL hash with current slide
   useEffect(() => {
-    window.location.hash = `${index}`;
+    const newHash = `#${index}`;
+    if (window.location.hash !== newHash) {
+      history.pushState(null, "", newHash);
+    }
   }, [index]);
 
-  // Listen for hash changes (back/forward button)
+  // Listen for popstate (back/forward button) and hashchange
   useEffect(() => {
-    const onHash = () => {
+    const onNav = () => {
       const hash = window.location.hash.slice(1);
       const num = parseInt(hash, 10);
-      if (!isNaN(num) && num >= 0 && num < SLIDES.length && num !== index) {
+      if (!isNaN(num) && num >= 0 && num < SLIDES.length) {
         setIndex(num);
       }
     };
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, [index]);
+    window.addEventListener("popstate", onNav);
+    window.addEventListener("hashchange", onNav);
+    return () => {
+      window.removeEventListener("popstate", onNav);
+      window.removeEventListener("hashchange", onNav);
+    };
+  }, []);
 
   // ── Navigation with fade ────────────────────────────────────────────────
   const goTo = useCallback(

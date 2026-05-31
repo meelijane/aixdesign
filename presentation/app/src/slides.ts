@@ -293,7 +293,7 @@ export const SLIDES: Slide[] = [
       ],
       modalBullet: 1,
     },
-    bg: { ascii: coloredFieldBg(5, { density: 0.45, animationStyle: "cascade-left-right", animationIntensity: 0.25 }) },
+    bg: { ascii: coloredFieldBg(5, { density: 0.45, animationStyle: "pulse", animationIntensity: 0.08, speed: 0.3 }) },
     modal: {
       title: "Voice → CLI · live transcription",
       tag: "PROMPTING",
