@@ -1,3 +1,5 @@
 presentation/app/public/chair.gif
 .DS_Store
 node_modules/
+references/ascii-art.gif
+dist/
