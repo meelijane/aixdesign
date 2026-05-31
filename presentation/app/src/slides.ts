@@ -533,7 +533,7 @@ export const SLIDES: Slide[] = [
     layout: "full",
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: { heading: "Right tool\nfor the job" },
-    bg: { ascii: coloredImageAscii("/tools.jpg", 3, { vignette: 0.45, density: 0.85, animationStyle: "pulse", animationIntensity: 0.3 }) },
+    bg: { ascii: coloredImageAscii("/tools-dark.png", 3, { vignette: 0.35, density: 0.9, animationStyle: "pulse", animationIntensity: 0.3 }) },
     notes: "Section opener. Pixel art idea: flat lay of a set of tools.",
   },
   // 4.1 — Prototype/polish
