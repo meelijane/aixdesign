@@ -640,6 +640,13 @@ export const SLIDES: Slide[] = [
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: { heading: "Get AI to do\nyour dishes" },
     bg: { ascii: coloredImageAscii("/claw-personal-os.jpg", 7, { vignette: 0.45, density: 0.85, animationStyle: "wave", animationIntensity: 0.3 }) },
+    modal: {
+      title: "Why dishes?",
+      tag: "CONTEXT",
+      blocks: [
+        { kind: "image", src: "/ai-dishes.jpg", alt: "AI doing the dishes", caption: "Let AI handle the tedious work so you can focus on what matters", pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 } },
+      ],
+    },
     notes: "Section opener. Pixel art idea: a lobster claw.",
   },
   // 5.1 — DS
