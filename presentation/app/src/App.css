@@ -1503,6 +1503,39 @@
   opacity: 0.82;
 }
 
+/* ── Image grid ──────────────────────────────────────────────────────── */
+.modal-image-grid {
+  display: grid;
+  gap: 8px;
+}
+.modal-image-grid-cell {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--phosphor-border);
+  background: #000;
+  overflow: hidden;
+}
+.modal-image-grid-cell > div {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.modal-image-grid-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--phosphor);
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
 /* Responsive — narrower viewports */
 @media (max-width: 900px) {
   .modal-frame { width: 92vw; }

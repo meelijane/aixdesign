@@ -47,7 +47,9 @@ export type ModalBlock =
   /** Slack / chat mock — looks like a thread of messages */
   | { kind: "chat"; channel?: string; messages: ChatMessage[] }
   /** Mini grid of mock UI cards (e.g. convergent 'For You' pages) */
-  | { kind: "grid"; columns?: number; cards: { title: string; lines?: string[] }[] };
+  | { kind: "grid"; columns?: number; cards: { title: string; lines?: string[] }[] }
+  /** Grid of images rendered through the pixel shader */
+  | { kind: "image-grid"; columns?: number; images: { src: string; caption?: string }[] };
 export type TerminalLine =
   | { type: "prompt"; user?: string; cmd: string }
   | { type: "out"; text: string }
@@ -446,18 +448,17 @@ export const SLIDES: Slide[] = [
       tag: "PATTERN ROT",
       blocks: [
         {
-          kind: "grid",
+          kind: "image-grid",
           columns: 3,
-          cards: [
-            { title: "PRODUCT A", lines: ["▣ Hero card", "▢ Suggested for you", "▢ Recently used", "▢ Top picks"] },
-            { title: "PRODUCT B", lines: ["▣ Hero card", "▢ Picked for you", "▢ Recently viewed", "▢ Trending"] },
-            { title: "PRODUCT C", lines: ["▣ Hero card", "▢ For you", "▢ Continue", "▢ Recommended"] },
-            { title: "PRODUCT D", lines: ["▣ Hero card", "▢ Just for you", "▢ Pick up where…", "▢ Suggested"] },
-            { title: "PRODUCT E", lines: ["▣ Hero card", "▢ Tailored for you", "▢ Resume", "▢ Hot now"] },
-            { title: "PRODUCT F", lines: ["▣ Hero card", "▢ For you", "▢ Recent", "▢ Trending"] },
+          images: [
+            { src: "/convergent-1.png" },
+            { src: "/convergent-2.png" },
+            { src: "/convergent-3.png" },
+            { src: "/convergent-4.png" },
+            { src: "/convergent-5.png" },
+            { src: "/convergent-6.png" },
           ],
         },
-        { kind: "text", body: "Six products. One page. The models trained on each other's outputs — and the divergence phase quietly died." },
       ],
       footer: "Source: competitive scan · 2026",
     },
