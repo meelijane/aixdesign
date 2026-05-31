@@ -220,7 +220,6 @@ export const SLIDES: Slide[] = [
     id: "s1-org-context",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Organisational\ncontext is key",
