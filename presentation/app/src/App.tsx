@@ -482,7 +482,7 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
         <div className="modal-image-grid" style={{ gridTemplateColumns: `repeat(${block.columns ?? 3}, 1fr)` }}>
           {block.images.map((img, i) => (
             <div key={i} className="modal-image-grid-cell">
-              <Pixel src={img.src} alt={img.caption ?? ""} pixelSize={3} levels={8} threshold={0.03} fit="cover" contrast={1.2} brightness={1.0} />
+              <img src={img.src} alt={img.caption ?? ""} className="modal-image-grid-img" />
               {img.caption && <span className="modal-image-grid-caption">{img.caption}</span>}
             </div>
           ))}
