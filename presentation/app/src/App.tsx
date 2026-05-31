@@ -45,25 +45,34 @@ export default function App() {
   const hasModal = !!slide.modal;
   const palette = slide.palette ?? "color";
 
-  // Sync URL hash with current slide
+  // ── URL ↔ slide sync ─────────────────────────────────────────────────
+  // Guard to prevent the hashchange listener from re-entering setIndex
+  // when we ourselves are the ones who set the hash.
+  const settingHashRef = useRef(false);
+
+  // Write hash when index changes
   useEffect(() => {
-    window.location.replace(`#${index}`);
+    settingHashRef.current = true;
+    window.location.hash = String(index);
+    // Reset the guard after the browser fires (or doesn't fire) hashchange
+    requestAnimationFrame(() => { settingHashRef.current = false; });
   }, [index]);
 
-  // Listen for popstate (back/forward button) and hashchange
+  // Read hash when user navigates via browser back/forward
   useEffect(() => {
     const onNav = () => {
+      if (settingHashRef.current) return; // we set it ourselves
       const hash = window.location.hash.slice(1);
       const num = parseInt(hash, 10);
       if (!isNaN(num) && num >= 0 && num < SLIDES.length) {
         setIndex(num);
       }
     };
-    window.addEventListener("popstate", onNav);
     window.addEventListener("hashchange", onNav);
+    window.addEventListener("popstate", onNav);
     return () => {
-      window.removeEventListener("popstate", onNav);
       window.removeEventListener("hashchange", onNav);
+      window.removeEventListener("popstate", onNav);
     };
   }, []);
 
