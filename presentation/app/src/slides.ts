@@ -293,7 +293,7 @@ export const SLIDES: Slide[] = [
       ],
       modalBullet: 1,
     },
-    bg: { ascii: coloredFieldBg(5, { density: 0.45, animationStyle: "pulse", animationIntensity: 0.08, speed: 0.3 }) },
+    bg: { ascii: coloredFieldBg(5, { density: 0.45, animationStyle: "pulse", animationIntensity: 0.06, speed: 0.3 }) },
     modal: {
       title: "Voice → CLI · live transcription",
       tag: "PROMPTING",
@@ -319,7 +319,7 @@ export const SLIDES: Slide[] = [
     layout: "full",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: { heading: "Quality is\na team sport" },
-    bg: { ascii: coloredImageAscii("/hands-puzzle.jpg", 6, { vignette: 0.45, density: 0.85, animationStyle: "wave", animationIntensity: 0.3 }) },
+    bg: { ascii: coloredImageAscii("/hands-puzzle.jpg", 6, { vignette: 0.45, density: 0.85, animationStyle: "pulse", animationIntensity: 0.06, speed: 0.3 }) },
     notes: "Section opener. Pixel art idea: hands with puzzle pieces.",
   },
   // 2.1 — Lightspeed
@@ -343,17 +343,15 @@ export const SLIDES: Slide[] = [
       tag: "INTERNAL",
       blocks: [
         {
-          kind: "grid",
-          columns: 3,
-          cards: [
-            { title: "WEEK 01", lines: ["June 2025", "12,400 people", "1,840 prototypes", "+ 320 agents shipped"] },
-            { title: "WEEK 02", lines: ["Oct 2025", "13,100 people", "2,200 prototypes", "+ 490 agents shipped"] },
-            { title: "WEEK 03", lines: ["Feb 2026", "13,800 people", "3,100 prototypes", "+ 720 agents shipped"] },
-          ],
+          kind: "image",
+          src: "/design-camp.jpeg",
+          alt: "Design camp — learning to prototype with AI together",
+          caption: "Slowing down to speed up — the whole design org learning together",
+          pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 },
         },
         { kind: "text", body: "Three company-wide off-weeks. Whole product orgs stopped shipping to build, pair, share, and learn together. Slowing down made us faster." },
       ],
-      footer: "Source: Atlassian Central AI · internal report",
+      footer: "Source: Atlassian Design Camp",
     },
     notes: "Industry is fast. Atlassian's response: slow down to speed up.",
   },
