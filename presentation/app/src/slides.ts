@@ -697,17 +697,7 @@ export const SLIDES: Slide[] = [
       title: "#content-design-help · Slack agent",
       tag: "INTERNAL",
       blocks: [
-        {
-          kind: "chat",
-          channel: "#content-design-help",
-          messages: [
-            { author: "Priya R.", time: "10:14", text: "What's our tone for a destructive action confirmation? 'Delete' or 'Remove'?" },
-            { author: "Content Bot", badge: "AGENT", time: "10:14", text: "Atlassian voice prefers 'Delete' when the action is final + 'Remove' when the item is recoverable. Heuristic: if undo exists, say Remove." },
-            { author: "Content Bot", badge: "AGENT", time: "10:14", text: "Example: Delete project · permanent · Remove from project · reversible. Reference: voice & tone v3.2." },
-            { author: "Priya R.", time: "10:15", text: "🙏 perfect, can you suggest helper text for the confirm dialog?" },
-            { author: "Content Bot", badge: "AGENT", time: "10:15", text: "Try: 'This permanently deletes the project and all of its issues. This action can't be undone.'" },
-          ],
-        },
+        { kind: "image", src: "/content-assistant.png", alt: "Content design assistant in Slack", caption: "A Slack agent trained on Atlassian's voice & tone guidelines", pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 } },
       ],
       footer: "Source: Atlassian Slack · #content-design-help",
     },
