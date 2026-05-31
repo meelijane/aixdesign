@@ -189,8 +189,8 @@ Look for opportunities to ship changes to apps, tools and systems, big or small 
 
 > The power of a good design system
 - ADS, our design system, has been incredible leverage
-- Our Design Systems team very quickly made an ADS MCP so agents could leverage our design system
-- Our design systems team now includes Design Technologists, a new role for highly skilled technical designers [modal]
+- We created an ADS MCP so agents could leverage our design system through various surfaces
+- Our team now includes Design Technologists, a new role for highly skilled technical designers [modal]
 
 [modal content -> design tech prios]
 
