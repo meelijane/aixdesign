@@ -401,13 +401,7 @@ export const SLIDES: Slide[] = [
       title: "Studio canvas — agent builder",
       tag: "DOGFOOD",
       blocks: [
-        {
-          kind: "image",
-          src: "/studio-light.png",
-          alt: "Atlassian Studio — agent builder canvas",
-          caption: "We build Studio. We use Studio. Every gap we feel, our customers feel ten times worse.",
-          pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 },
-        },
+        { kind: "video", src: "/design-reviews-agent-studio.mov", caption: "We build Studio. We use Studio. Every gap we feel, our customers feel ten times worse.", loop: true, muted: true },
       ],
       footer: "Source: Atlassian Studio · internal builds",
     },

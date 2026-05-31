@@ -85,7 +85,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 
 > Eat your own dogfood, see how it tastes
 - We are culturally hard-wired to use our own tools - this is good and bad [modal]
-- Spending more time with customers is critically important - and helps you idenitify the gaps
+- Spending more time with customers is critically important & helps you idenitify the gaps
 - You don't want customers doing your QA 
 
 [modal content -> screenshot of studio]
