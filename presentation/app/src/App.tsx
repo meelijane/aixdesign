@@ -742,7 +742,7 @@ function SlideContent({ slide }: { slide: (typeof SLIDES)[number] }) {
       return (
         <div className="hero-inner">
           <h1 className="hero-title">{linebreaks(c.title)}</h1>
-          {c.subtitle && <p className="hero-subtitle">{c.subtitle}</p>}
+          {c.subtitle && <p className="hero-subtitle">{linebreaks(c.subtitle)}</p>}
         </div>
       );
 
