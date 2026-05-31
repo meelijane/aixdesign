@@ -1526,10 +1526,16 @@
   object-fit: contain;
   filter: grayscale(1) sepia(1) saturate(3) hue-rotate(85deg) brightness(0.65) contrast(1.2);
   opacity: 0;
-  transition: opacity 600ms ease;
+  transform: translateX(100%);
+  transition: transform 500ms ease, opacity 500ms ease;
 }
 .modal-carousel-img.active {
   opacity: 1;
+  transform: translateX(0);
+}
+.modal-carousel-img.prev {
+  opacity: 0;
+  transform: translateX(-100%);
 }
 .modal-carousel-dots {
   position: absolute;

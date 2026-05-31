@@ -661,8 +661,14 @@ function ChatIllustration({
 
 function ImageCarousel({ images, interval }: { images: { src: string; caption?: string }[]; interval: number }) {
   const [current, setCurrent] = useState(0);
+  const [prev, setPrev] = useState(-1);
   useEffect(() => {
-    const t = setInterval(() => setCurrent((c) => (c + 1) % images.length), interval);
+    const t = setInterval(() => {
+      setCurrent((c) => {
+        setPrev(c);
+        return (c + 1) % images.length;
+      });
+    }, interval);
     return () => clearInterval(t);
   }, [images.length, interval]);
   return (
@@ -673,7 +679,7 @@ function ImageCarousel({ images, interval }: { images: { src: string; caption?: 
             key={i}
             src={img.src}
             alt={img.caption ?? ""}
-            className={`modal-carousel-img ${i === current ? "active" : ""}`}
+            className={`modal-carousel-img ${i === current ? "active" : i === prev ? "prev" : ""}`}
           />
         ))}
         <div className="modal-carousel-dots">
