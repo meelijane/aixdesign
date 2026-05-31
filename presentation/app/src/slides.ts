@@ -226,7 +226,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "The Teamwork Graph elevates your organisation's shared context",
         "You can spend less time searching and more time making",
-        "Your foundation is strong",
+        "AI can pull contextually relevant info for you in various surfaces",
       ],
       modalBullet: 0,
     },

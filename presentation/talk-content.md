@@ -42,7 +42,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 > Organisational context is key
 - The teamwork graph elevates your organisation's shared context  [modal]
 - You can spend less time searching and more time making 
-- Your foundation is strong
+- AI can pull contextually relevant info for you in various surfaces
 
 [modal content -> animation of the graph]
 
