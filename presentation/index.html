@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lessons from the AI Frontier — Milly Schmidt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0f;
+      --fg:        #e8e8f0;
+      --dim:       #555570;
+      --accent1:   #ff4dff;   /* hot magenta */
+      --accent2:   #4dffd2;   /* cyan-mint */
+      --accent3:   #ffd24d;   /* amber */
+      --accent4:   #4d8fff;   /* electric blue */
+      --mono: 'DM Mono', 'Fira Code', monospace;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--mono);
+      overflow: hidden;
+      cursor: none;
+    }
+
+    /* ── Slide container ──────────────────────────────────── */
+    #deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 8vw 10vw;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0s;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── ASCII background canvas ──────────────────────────── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .slide { z-index: 1; }
+
+    /* ── Full-bleed ASCII art background per slide ────────────── */
+    .slide-bg-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+    /* Vignette over image so text is readable */
+    .slide-bg-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 80% at 30% 50%,
+          transparent 0%,
+          rgba(10,10,15,0.5) 50%,
+          rgba(10,10,15,0.92) 100%
+        );
+    }
+    /* All text content sits above the image */
+    .slide > *:not(.slide-bg-img) { position: relative; z-index: 2; }
+
+    /* ── Fade overlay ─────────────────────────────────────── */
+    #fade {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      transition: opacity 0.3s ease;
+    }
+    #fade.dark { opacity: 1; }
+
+    /* ── Typography ───────────────────────────────────────── */
+
+    /* Slide number / chapter label */
+    .label {
+      font-family: var(--mono);
+      font-size: clamp(0.65rem, 1.2vw, 0.9rem);
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 2.5rem;
+    }
+    .label .num {
+      color: var(--accent1);
+      margin-right: 0.75em;
+    }
+
+    /* Main title — very large */
+    .title {
+      font-family: var(--mono);
+      font-size: clamp(3rem, 8vw, 9rem);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 3rem;
+      max-width: 18ch;
+    }
+    .title em {
+      font-style: italic;
+      color: var(--accent1);
+    }
+    .title .accent2 { color: var(--accent2); }
+    .title .accent3 { color: var(--accent3); }
+    .title .accent4 { color: var(--accent4); }
+
+    /* Subtitle / deck label under hero title */
+    .subtitle {
+      font-family: var(--mono);
+      font-size: clamp(0.85rem, 1.8vw, 1.3rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    /* Body copy */
+    .body {
+      font-family: var(--mono);
+      font-size: clamp(1rem, 2.2vw, 1.6rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--fg);
+      max-width: 52ch;
+      margin-bottom: 2rem;
+    }
+    .body strong {
+      font-weight: 500;
+      color: var(--accent2);
+    }
+    .body em {
+      font-style: italic;
+      color: var(--accent3);
+    }
+
+    /* Pull quote — very large single statement */
+    .quote {
+      font-family: var(--mono);
+      font-size: clamp(1.6rem, 4vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--fg);
+      max-width: 28ch;
+      margin-bottom: 2.5rem;
+      border-left: 2px solid var(--accent1);
+      padding-left: 2rem;
+    }
+
+    /* Bullet list */
+    .list {
+      list-style: none;
+      font-family: var(--mono);
+      font-size: clamp(0.95rem, 2vw, 1.45rem);
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--fg);
+      max-width: 52ch;
+    }
+    .list li {
+      padding: 0.35em 0;
+      padding-left: 2em;
+      position: relative;
+    }
+    .list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent1);
+      font-weight: 400;
+    }
+    .list li.cyan::before  { color: var(--accent2); }
+    .list li.amber::before { color: var(--accent3); }
+    .list li.blue::before  { color: var(--accent4); }
+
+    /* Divider / rule */
+    .rule {
+      width: 4rem;
+      height: 1px;
+      background: var(--accent1);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ASCII art block — decorative large character art */
+    .ascii-art {
+      font-family: var(--mono);
+      font-size: clamp(0.4rem, 0.9vw, 0.75rem);
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      color: var(--accent1);
+      opacity: 0.4;
+      white-space: pre;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Two-column layout */
+    .cols {
+      display: flex;
+      gap: 8vw;
+      align-items: flex-start;
+    }
+    .col { flex: 1; }
+
+    /* Hero layout — full bleed */
+    .slide.hero {
+      justify-content: flex-end;
+      padding-bottom: 10vh;
+    }
+
+    /* ── Progress bar ─────────────────────────────────────── */
+    #progress {
+      position: fixed;
+      bottom: 2.5rem;
+      right: 3rem;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+    }
+    #progress .pip {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--dim);
+      transition: background 0.3s;
+    }
+    #progress .pip.active { background: var(--accent1); }
+
+    /* ── Speaker notes ────────────────────────────────────── */
+    #notes {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(10,10,15,0.97);
+      border-top: 1px solid var(--dim);
+      padding: 1.2rem 3rem;
+      z-index: 200;
+      transform: translateY(100%);
+      transition: transform 0.25s ease;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--accent3);
+    }
+    #notes.visible { transform: translateY(0); }
+    #notes-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Hints ────────────────────────────────────────────── */
+    #hint {
+      position: fixed;
+      bottom: 2.5rem;
+      left: 3rem;
+      z-index: 50;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+    #hint.hidden { opacity: 0; }
+
+    /* ── Slide-specific tweaks ────────────────────────────── */
+
+    /* Hero layout — bottom anchored */
+    .slide.hero {
+      justify-content: flex-end;
+      padding-bottom: 10vh;
+    }
+
+    /* Hero title — stacked lines, very large */
+    .hero-title { margin-bottom: 2.5rem; }
+    .title-line {
+      font-family: var(--mono);
+      font-size: clamp(4rem, 10vw, 11rem);
+      font-weight: 500;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+      display: block;
+    }
+    .title-line em { font-style: italic; color: var(--accent1); }
+
+    /* Hero subtitle */
+    .hero-sub {
+      font-family: var(--mono);
+      font-size: clamp(0.75rem, 1.5vw, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--dim);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    /* ASCII deco — top right on hero */
+    .ascii-deco {
+      position: absolute;
+      top: 6vh;
+      right: 6vw;
+      font-family: var(--mono);
+      font-size: clamp(0.5rem, 0.9vw, 0.75rem);
+      line-height: 1.4;
+      color: var(--accent1);
+      opacity: 0.3;
+      white-space: pre;
+      text-align: right;
+    }
+
+    /* Section slide — giant centred title */
+    .slide.slide-section { justify-content: center; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: clamp(0.6rem, 1vw, 0.8rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      font-family: var(--mono);
+      font-size: clamp(3.5rem, 9vw, 10rem);
+      font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+    .section-title em { font-style: italic; color: var(--accent1); }
+
+    /* Slide heading — body + bullets slides */
+    .slide-heading {
+      font-family: var(--mono);
+      font-size: clamp(1.4rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      margin-bottom: 2rem;
+      max-width: 36ch;
+    }
+    .slide-heading em { font-style: italic; color: var(--accent2); }
+
+    /* Bullet colour variants */
+    .list li.cyan::before  { color: var(--accent2); }
+    .list li.amber::before { color: var(--accent3); }
+    .list li.blue::before  { color: var(--accent4); }
+    .list li.magenta::before { color: var(--accent1); }
+
+    /* Typewriter cursor */
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1.1em;
+      background: var(--accent1);
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* Content reveal — children animate in */
+    .slide.active .reveal {
+      animation: revealIn 0.4s ease both;
+    }
+    .slide.active .reveal:nth-child(2) { animation-delay: 0.1s; }
+    .slide.active .reveal:nth-child(3) { animation-delay: 0.2s; }
+    .slide.active .reveal:nth-child(4) { animation-delay: 0.3s; }
+    .slide.active .reveal:nth-child(5) { animation-delay: 0.4s; }
+    .slide.active .reveal:nth-child(6) { animation-delay: 0.5s; }
+
+    @keyframes revealIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Animated ASCII background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Fade overlay for transitions -->
+  <div id="fade"></div>
+
+  <!-- Slide deck — populated by slides.js -->
+  <div id="deck"></div>
+
+  <!-- Progress pips -->
+  <div id="progress"></div>
+
+  <!-- Speaker notes -->
+  <div id="notes">
+    <div id="notes-label">// SPEAKER NOTES</div>
+    <div id="notes-content"></div>
+  </div>
+
+  <!-- Hint -->
+  <div id="hint">SPACE / → advance &nbsp;·&nbsp; ← back &nbsp;·&nbsp; F fullscreen &nbsp;·&nbsp; N inline notes &nbsp;·&nbsp; P speaker window</div>
+
+  <!-- Scripts -->
+  <script src="slides.js"></script>
+  <script src="engine.js"></script>
+
+</body>
+</html>
