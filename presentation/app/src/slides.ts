@@ -559,18 +559,13 @@ export const SLIDES: Slide[] = [
         {
           kind: "flow",
           stages: [
-            { label: "DIVERGE", sub: "Figma AI · Sketch ideas" },
-            { label: "PROTOTYPE", sub: "v0 · Rovo Dev · Cursor" },
-            { label: "CRITIQUE", sub: "AI review · A11y agent" },
-            { label: "POLISH", sub: "ADS MCP · linter agents" },
-            { label: "SHIP", sub: "Bitbucket · Rovo PRs" },
+            { label: "IDEATE", sub: "Rovo Dev prototypes" },
+            { label: "REFINE", sub: "Figma screens & specs" },
+            { label: "CRITIQUE", sub: "Humans focus here" },
+            { label: "BUILD", sub: "Eng collab & pairing" },
+            { label: "POLISH", sub: "Designers ship PRs" },
           ],
         },
-        { kind: "bullets", items: [
-          "Generative for the messy left — exploration, options, breadth",
-          "Automated for the precise right — checks, polish, consistency",
-          "One tool can't be everything — and it shouldn't try",
-        ] },
       ],
       footer: "Source: Atlassian Design · AI tooling map",
     },
