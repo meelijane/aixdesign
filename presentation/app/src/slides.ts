@@ -591,7 +591,7 @@ export const SLIDES: Slide[] = [
       title: "Notebook plan — for this talk",
       tag: "ARTEFACT",
       blocks: [
-        { kind: "image", src: "/ma.webp", alt: "Notebook reference", caption: "The actual notebook · scrawled before any pixel was placed", pixel: { pixelSize: 7, levels: 5, threshold: 0.12, fit: "cover" } },
+        { kind: "image", src: "/pen.jpg", alt: "Notebook plan for this talk", caption: "The actual notebook · scrawled before any pixel was placed", pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 } },
       ],
       footer: "Photo: Milly's notebook",
     },
@@ -776,6 +776,14 @@ export const SLIDES: Slide[] = [
     id: "thanks",
     type: "thanks",
     content: { title: "Thank you", subtitle: "Milly Schmidt · millyschmidt.me · atlassian.design\ngithub.com/meelijane/aixdesign" },
+    modal: {
+      title: "The real helpers",
+      tag: "BONUS",
+      blocks: [
+        { kind: "image", src: "/helpers.jpg", alt: "Cats helping write the talk", caption: "The real co-authors", pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 } },
+      ],
+      footer: "🐱",
+    },
     bg: { ascii: { ...fieldBg, density: 0.35, animationIntensity: 0.8 } },
     notes: "Q&A.",
   },
