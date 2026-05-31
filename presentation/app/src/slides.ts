@@ -252,7 +252,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s1-personal-context",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Personal context\nis also critical",
@@ -328,7 +328,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s2-lightspeed",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "The industry is\nmoving at lightspeed",
@@ -386,7 +386,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s2-dogfood",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "Eat your own dogfood,\nsee how it tastes",
@@ -467,7 +467,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s3-agentic",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "Some experiences are\nharder to do agentically",
@@ -540,7 +540,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s4-prototype-polish",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "AI to prototype\nvs AI to polish",
@@ -601,7 +601,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s4-skill",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "Knowing when to\nleverage AI is a skill",
@@ -681,7 +681,7 @@ export const SLIDES: Slide[] = [
   {
     id: "s5-content-design",
     type: "body",
-    layout: "split-right",
+    layout: "split-left",
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "We transformed\ncontent design",
