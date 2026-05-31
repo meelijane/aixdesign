@@ -14,10 +14,8 @@
 //
 // Each slide that carries a modal uses the phosphor palette so the
 // ASCII background and the modal share the green/black aesthetic.
-
 import type { AsciiProps } from "./shaders/ascii";
 import type { PixelProps } from "./shaders/pixel";
-
 export type SlideType =
   | "hero"
   | "section"
@@ -25,16 +23,13 @@ export type SlideType =
   | "body"
   | "summary"
   | "thanks";
-
 export type Layout =
   | "full"
   | "split-left"
   | "split-right"
   | "deco"
   | "bare";
-
 export type Palette = "color" | "phosphor";
-
 export type ModalBlock =
   | { kind: "image"; src: string; alt?: string; caption?: string; pixel?: Partial<PixelProps> }
   | { kind: "text"; body: string | string[] }
@@ -52,20 +47,17 @@ export type ModalBlock =
   | { kind: "chat"; channel?: string; messages: ChatMessage[] }
   /** Mini grid of mock UI cards (e.g. convergent 'For You' pages) */
   | { kind: "grid"; columns?: number; cards: { title: string; lines?: string[] }[] };
-
 export type TerminalLine =
   | { type: "prompt"; user?: string; cmd: string }
   | { type: "out"; text: string }
   | { type: "comment"; text: string }
   | { type: "blank" };
-
 export type ChatMessage = {
   author: string;
   badge?: string; // e.g. "BOT" or "AGENT"
   text: string;
   time?: string;
 };
-
 export type Modal = {
   title: string;
   tag?: string;
@@ -73,7 +65,6 @@ export type Modal = {
   footer?: string;
   todo?: boolean;
 };
-
 export type Slide = {
   id: string;
   type: SlideType;
@@ -100,12 +91,10 @@ export type Slide = {
   modal?: Modal;
   notes?: string;
 };
-
 // ── Palette tokens ──────────────────────────────────────────────────────────
 const PHOSPHOR_GREEN = "#7CFFB2";
 const PHOSPHOR_DIM = "#3A9460";
 const PHOSPHOR_BG = "#04120A";
-
 // A bigger palette to cycle through. Each entry = a pair of colors
 // (primary + secondary) used as ascii source colors. The whole presentation
 // rotates through this palette so neighbouring slides feel visually distinct.
@@ -122,10 +111,8 @@ const SLIDE_PALETTES: [string, string][] = [
   ["#FF4D88", "#AF59E1"],   // pink + violet
   ["#00B8D9", "#1868DB"],   // cyan + blue
 ];
-
 const paletteFor = (i: number): [string, string] =>
   SLIDE_PALETTES[i % SLIDE_PALETTES.length];
-
 // Default multi-color ascii field — used for hero / section / outro slides.
 const fieldBg: Partial<AsciiProps> = {
   sourceMode: "field",
@@ -141,7 +128,6 @@ const fieldBg: Partial<AsciiProps> = {
   charset: "light",
   vignette: 0.5,
 };
-
 // Colored field — uses the slide's palette while still on the dark CRT background.
 const coloredFieldBg = (index: number, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   ...fieldBg,
@@ -153,7 +139,6 @@ const coloredFieldBg = (index: number, extra: Partial<AsciiProps> = {}): Partial
   vignette: 0.55,
   ...extra,
 });
-
 // Image-driven phosphor ascii — section headers with a pixel-art reference image.
 const phosphorImageAscii = (src: string, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   imageSrc: src,
@@ -172,7 +157,6 @@ const phosphorImageAscii = (src: string, extra: Partial<AsciiProps> = {}): Parti
   vignette: 0.5,
   ...extra,
 });
-
 // Colored image-driven ascii — same as phosphor but with the slide's palette.
 const coloredImageAscii = (
   src: string,
@@ -180,8 +164,6 @@ const coloredImageAscii = (
   extra: Partial<AsciiProps> = {},
 ): Partial<AsciiProps> =>
   phosphorImageAscii(src, { sourceColors: paletteFor(index), ...extra });
-
-
 // Lobby/overview/summary list of the five section names.
 const FIVE_SECTIONS = [
   "Garbage in, garbage out",
@@ -190,9 +172,7 @@ const FIVE_SECTIONS = [
   "Right tool for the job",
   "Get AI to do your dishes",
 ];
-
 export const SLIDES: Slide[] = [
-
   // ═══════════════════════════════════════════════════════════════════════
   // 00 · HERO
   // ═══════════════════════════════════════════════════════════════════════
@@ -207,7 +187,6 @@ export const SLIDES: Slide[] = [
     notes:
       "Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design manager on Rovo Studio, which is part of the Central AI organisation. We are building AI with AI. This is a talk about what we've actually learned in the last year or so — the good, the awkward, the surprising.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // 01 · OVERVIEW
   // ═══════════════════════════════════════════════════════════════════════
@@ -219,7 +198,6 @@ export const SLIDES: Slide[] = [
     bg: { ascii: { ...fieldBg, sourceColors: paletteFor(1), density: 0.4, animationIntensity: 0.4 } },
     notes: "Here's the shape of the next 25 minutes. Five lessons.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // §01 SECTION
   // ═══════════════════════════════════════════════════════════════════════
@@ -232,7 +210,6 @@ export const SLIDES: Slide[] = [
     bg: { ascii: coloredImageAscii("/garbage.jpg", 2, { vignette: 0.45, density: 0.85, animationStyle: "pulse", animationIntensity: 0.3 }) },
     notes: "Section opener — garbage can image offset right so the heading sits clear on the left.",
   },
-
   // 1.1 — Org context
   {
     id: "s1-org-context",
@@ -268,13 +245,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Lead with org context. The graph is unglamorous infrastructure that makes the magic possible.",
   },
-
   // 1.2 — Personal context (Loom)
   {
     id: "s1-personal-context",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Personal context\nis also critical",
@@ -305,13 +280,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Personal context: the org graph gives you shared context. Personal context makes the response feel made for you. Loom is the unlock.",
   },
-
   // 1.3 — Specificity & iteration
   {
     id: "s1-iteration",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Specificity\nand iteration",
@@ -350,7 +323,6 @@ export const SLIDES: Slide[] = [
     },
     notes: "Specificity + iteration.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // §02 SECTION
   // ═══════════════════════════════════════════════════════════════════════
@@ -363,13 +335,11 @@ export const SLIDES: Slide[] = [
     bg: { ascii: coloredImageAscii("/hands-puzzle.jpg", 6, { vignette: 0.45, density: 0.85, animationStyle: "wave", animationIntensity: 0.3 }) },
     notes: "Section opener. Pixel art idea: hands with puzzle pieces.",
   },
-
   // 2.1 — Lightspeed
   {
     id: "s2-lightspeed",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "The industry is\nmoving at lightspeed",
@@ -401,13 +371,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Industry is fast. Atlassian's response: slow down to speed up.",
   },
-
   // 2.2 — Enterprise needs safety
   {
     id: "s2-safety",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "Enterprise customers\nneed to feel safe",
@@ -435,13 +403,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Trust takes a long time to build and a moment to lose.",
   },
-
   // 2.3 — Dogfood
   {
     id: "s2-dogfood",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "Eat your own dogfood,\nsee how it tastes",
@@ -474,7 +440,6 @@ export const SLIDES: Slide[] = [
     },
     notes: "Dogfooding is in our DNA.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // §03 SECTION
   // ═══════════════════════════════════════════════════════════════════════
@@ -487,13 +452,11 @@ export const SLIDES: Slide[] = [
     bg: { ascii: coloredFieldBg(10, { density: 0.55, animationStyle: "reveal", animationIntensity: 0.4 }) },
     notes: "Section opener. Pixel art idea: arrows pointing in different directions converging on a point.",
   },
-
   // 3.1 — Convergent
   {
     id: "s3-convergent",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "We noticed a lot of\nconvergent thinking",
@@ -528,13 +491,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Convergence is the silent killer.",
   },
-
   // 3.2 — Agentic
   {
     id: "s3-agentic",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "Some experiences are\nharder to do agentically",
@@ -562,13 +523,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Chat isn't the answer to everything.",
   },
-
   // 3.3 — Hard easier
   {
     id: "s3-hard-easier",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "Don't make easy things easier;\nmake hard things easier",
@@ -601,7 +560,6 @@ export const SLIDES: Slide[] = [
     },
     notes: "Hard problems are the unlock.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // §04 SECTION
   // ═══════════════════════════════════════════════════════════════════════
@@ -614,13 +572,11 @@ export const SLIDES: Slide[] = [
     bg: { ascii: coloredImageAscii("/tools.jpg", 3, { vignette: 0.45, density: 0.85, animationStyle: "pulse", animationIntensity: 0.3 }) },
     notes: "Section opener. Pixel art idea: flat lay of a set of tools.",
   },
-
   // 4.1 — Prototype/polish
   {
     id: "s4-prototype-polish",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "AI to prototype\nvs AI to polish",
@@ -657,13 +613,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Stop arguing about which AI tool is best.",
   },
-
   // 4.2 — Pen
   {
     id: "s4-pen",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "Sometimes\nyou need a pen",
@@ -687,13 +641,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Mandates feel awful.",
   },
-
   // 4.3 — Skill
   {
     id: "s4-skill",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "Knowing when to\nleverage AI is a skill",
@@ -723,7 +675,6 @@ export const SLIDES: Slide[] = [
     },
     notes: "Three skills.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // §05 SECTION
   // ═══════════════════════════════════════════════════════════════════════
@@ -736,13 +687,11 @@ export const SLIDES: Slide[] = [
     bg: { ascii: coloredImageAscii("/claw-personal-os.jpg", 7, { vignette: 0.45, density: 0.85, animationStyle: "wave", animationIntensity: 0.3 }) },
     notes: "Section opener. Pixel art idea: a lobster claw.",
   },
-
   // 5.1 — DS
   {
     id: "s5-design-system",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "The power of a\ngood design system",
@@ -774,13 +723,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Design systems become AI superchargers.",
   },
-
   // 5.2 — Content
   {
     id: "s5-content-design",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "We transformed\ncontent design",
@@ -813,13 +760,11 @@ export const SLIDES: Slide[] = [
     },
     notes: "Content design + LLM is a natural fit.",
   },
-
   // 5.3 — Personal OS
   {
     id: "s5-personal-os",
     type: "body",
     layout: "split-right",
-    palette: "phosphor",
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "A personal\noperating system",
@@ -862,7 +807,6 @@ export const SLIDES: Slide[] = [
     },
     notes: "Personal OS = the second brain.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // IN SUMMARY
   // ═══════════════════════════════════════════════════════════════════════
@@ -874,14 +818,13 @@ export const SLIDES: Slide[] = [
     bg: { ascii: { ...fieldBg, sourceColors: paletteFor(0), density: 0.4, animationIntensity: 0.5 } },
     notes: "Recap the five lessons.",
   },
-
   // ═══════════════════════════════════════════════════════════════════════
   // THANK YOU
   // ═══════════════════════════════════════════════════════════════════════
   {
     id: "thanks",
     type: "thanks",
-    content: { title: "Thank you", subtitle: "Milly Schmidt · millyschmidt.me · atlassian.design" },
+    content: { title: "Thank you", subtitle: "Milly Schmidt · millyschmidt.me · atlassian.design\ngithub.com/meelijane/aixdesign" },
     bg: { ascii: { ...fieldBg, density: 0.35, animationIntensity: 0.8 } },
     notes: "Q&A.",
   },
