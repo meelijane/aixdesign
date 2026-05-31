@@ -319,7 +319,7 @@ export const SLIDES: Slide[] = [
     layout: "full",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: { heading: "Quality is\na team sport" },
-    bg: { ascii: coloredImageAscii("/hands-puzzle.jpg", 6, { vignette: 0.45, density: 0.85, animationStyle: "pulse", animationIntensity: 0.06, speed: 0.3 }) },
+    bg: { ascii: coloredImageAscii("/hands-puzzle-dark.jpeg", 6, { vignette: 0.35, density: 1.0, contrast: 1.4, animationStyle: "none", animationIntensity: 0 }) },
     notes: "Section opener. Pixel art idea: hands with puzzle pieces.",
   },
   // 2.1 — Lightspeed

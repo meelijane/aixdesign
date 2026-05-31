@@ -47,10 +47,7 @@ export default function App() {
 
   // Sync URL hash with current slide
   useEffect(() => {
-    const newHash = `#${index}`;
-    if (window.location.hash !== newHash) {
-      history.pushState(null, "", newHash);
-    }
+    window.location.replace(`#${index}`);
   }, [index]);
 
   // Listen for popstate (back/forward button) and hashchange
