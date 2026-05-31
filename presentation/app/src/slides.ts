@@ -265,12 +265,11 @@ export const SLIDES: Slide[] = [
       tag: "PERSONAL CONTEXT",
       blocks: [
         {
-          kind: "grid",
-          columns: 2,
-          cards: [
-            { title: "ZOOM · Q4 planning", lines: ["▢ Milly", "▢ Charlie", "▢ Hayley", "▢ Sam", "▢ + 6 others"] },
-            { title: "● LOOM RECORDING", lines: ["00:23:14", "Transcribing…", "Capturing visuals", "Extracting actions"] },
-          ],
+          kind: "image",
+          src: "/loom.png",
+          alt: "Loom recorder inside a Zoom meeting",
+          caption: "Loom records, transcribes and summarises — building your personal context corpus",
+          pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 },
         },
         { kind: "text", body: "Recordings become a personal corpus of context. The agent listens, transcribes, summarises, and writes the doc you would have written." },
       ],
