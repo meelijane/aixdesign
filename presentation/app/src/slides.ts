@@ -258,7 +258,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "Atlassian is a read/write culture — so we have a lot of Confluence docs",
         "But the real star here is Loom, which allows you to record meetings",
-        "Your goals, your priorities and your focus",
+        "Your goals, your priorities and your focus — as well as your thoughts in the moment — can now be fed into the next stage of your designs",
       ],
       modalBullet: 1,
     },

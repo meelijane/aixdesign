@@ -49,7 +49,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 > Personal context is also critical 
 - Atlassian is a read/write culture - so we have a lot of Confluence docs
 - But the real star here is Loom, which allows you to record meetings [modal]
-- Your goals, your priorities and your focus
+- Your goals, your priorities and your focus - as well as your thoughts in the moment - can now be fed into the next stage of your designs.
 
 [modal content -> Loom recorder in a Zoom meeting]
 
