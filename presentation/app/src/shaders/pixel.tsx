@@ -146,7 +146,7 @@ export default function Pixel({
   useEffect(() => {
     const img = new Image();
     img.crossOrigin = "anonymous";
-    img.onload = () => { console.log("Pixel: image loaded", src, img.naturalWidth, img.naturalHeight); imgRef.current = img; setImgLoaded(true); };
+    img.onload = () => { imgRef.current = img; setImgLoaded(true); };
     img.onerror = () => console.error("Pixel: FAILED to load", src);
     img.src = src;
     return () => { img.onload = null; img.onerror = null; };
@@ -154,7 +154,6 @@ export default function Pixel({
 
   // Init when image loaded — use ResizeObserver to wait for real dimensions
   useEffect(() => {
-    console.log("Pixel: effect run, imgLoaded=", imgLoaded, "canvas=", !!canvasRef.current, "img=", !!imgRef.current, "wrap=", !!wrapRef.current);
     if (!imgLoaded || !canvasRef.current || !imgRef.current || !wrapRef.current) return;
 
     const canvas = canvasRef.current;
@@ -235,7 +234,6 @@ export default function Pixel({
     }
 
     function initGL(w: number, h: number) {
-      console.log("Pixel: initGL", w, h);
       canvas.width = w;
       canvas.height = h;
 
@@ -267,21 +265,11 @@ export default function Pixel({
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, offscreen);
 
-      // DEBUG: check offscreen canvas has content
-      const dbgCtx = offscreen.getContext("2d")!;
-      const dbgPx = dbgCtx.getImageData(Math.floor(offscreen.width/2), Math.floor(offscreen.height/2), 1, 1).data;
-      console.log("Pixel: offscreen center pixel RGBA =", dbgPx[0], dbgPx[1], dbgPx[2], dbgPx[3]);
-      console.log("Pixel: offscreen size =", offscreen.width, offscreen.height);
-      console.log("Pixel: canvas size =", canvas.width, canvas.height);
-      console.log("Pixel: WebGL error after texImage2D =", gl.getError());
-
       const u = (name: string) => gl!.getUniformLocation(pgm!, name);
 
-      console.log("Pixel: about to start render loop, gl=", !!gl, "pgm=", !!pgm, "tex=", !!tex, "vao=", !!vao);
-      let logged = false;
       function render() {
         try {
-          if (!gl || !pgm || !tex) { if (!logged) { logged = true; console.log("Pixel: render bail — null"); } return; }
+          if (!gl || !pgm || !tex) return;
           const t = (performance.now() - start) / 1000;
           gl.viewport(0, 0, canvas.width, canvas.height);
           gl.clearColor(0, 0, 0, 1);
@@ -302,19 +290,11 @@ export default function Pixel({
           gl.uniform1f(u("curvature"), curvature);
           gl.uniform1f(u("flickerStrength"), 0.008);
           gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-          if (!logged) {
-            logged = true;
-            const px = new Uint8Array(4);
-            gl.readPixels(Math.floor(canvas.width/2), Math.floor(canvas.height/2), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
-            console.log("Pixel: WebGL output center pixel RGBA =", px[0], px[1], px[2], px[3]);
-            console.log("Pixel: WebGL error after draw =", gl.getError());
-          }
         } catch(e) {
-          console.error("Pixel: render exception", e);
+          // silent
         }
         raf = requestAnimationFrame(render);
       }
-      console.log("Pixel: calling render()");
       render();
       started = true;
     }

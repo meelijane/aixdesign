@@ -1509,7 +1509,6 @@ export default function Ascii({
 		let currentSourceMode: typeof initialProps.sourceMode | null = null;
 		let disposed = false;
 		const applyImage = (src: string | undefined, mode: typeof initialProps.sourceMode) => {
-			console.log("ASCII applyImage:", src, "mode:", mode, "disposed:", disposed);
 			currentImageSrc = src;
 			currentSourceMode = mode;
 			if (mode === "image" && src) {
@@ -1518,7 +1517,6 @@ export default function Ascii({
 					image.crossOrigin = "anonymous";
 				}
 				image.onload = () => {
-					console.log("ASCII image loaded:", src, "disposed:", disposed, "currentImageSrc:", currentImageSrc);
 					if (disposed) return;
 					if (currentImageSrc !== src) return;
 					gl.activeTexture(gl.TEXTURE0);
@@ -1526,7 +1524,6 @@ export default function Ascii({
 				};
 				image.src = src;
 			} else {
-				console.log("ASCII clearing texture — mode:", mode, "src:", src);
 				gl.activeTexture(gl.TEXTURE0);
 				setTextureFromSource(gl, sourceTexture, createEmptyTexture());
 			}
