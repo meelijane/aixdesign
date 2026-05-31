@@ -219,7 +219,6 @@ export const SLIDES: Slide[] = [
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Organisational\ncontext is key",
-      secondary: "Three ingredients to avoid slop · 1 of 3",
       bullets: [
         "The Teamwork Graph elevates your organisation's shared context",
         "You can spend less time searching and more time making",
@@ -253,7 +252,6 @@ export const SLIDES: Slide[] = [
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Personal context\nis also critical",
-      secondary: "Three ingredients to avoid slop · 2 of 3",
       bullets: [
         "Atlassian is a read/write culture — so we have a lot of Confluence docs",
         "But the real star here is Loom, which allows you to record meetings",
@@ -288,7 +286,6 @@ export const SLIDES: Slide[] = [
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: {
       heading: "Specificity\nand iteration",
-      secondary: "Three ingredients to avoid slop · 3 of 3",
       bullets: [
         "None of this matters if you prompt poorly",
         "Voice is critical for me — I can type fast but I can yap faster",
@@ -343,7 +340,6 @@ export const SLIDES: Slide[] = [
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "The industry is\nmoving at lightspeed",
-      secondary: "Don't panic; organise · 1 of 3",
       bullets: [
         "You have to learn to play slowly before you can play fast",
         "We have run 3 AI Builders Weeks, stopping the whole company to learn together",
@@ -379,7 +375,6 @@ export const SLIDES: Slide[] = [
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "Enterprise customers\nneed to feel safe",
-      secondary: "Don't panic; organise · 2 of 3",
       bullets: [
         "We damaged trust by moving too fast",
         "Some experiences should be deterministic",
@@ -411,7 +406,6 @@ export const SLIDES: Slide[] = [
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: {
       heading: "Eat your own dogfood,\nsee how it tastes",
-      secondary: "Don't panic; organise · 3 of 3",
       bullets: [
         "We are culturally hard-wired to use our own tools — this is good and bad",
         "Spending more time with customers is critically important — and helps you identify the gaps",
@@ -460,7 +454,6 @@ export const SLIDES: Slide[] = [
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "We noticed a lot of\nconvergent thinking",
-      secondary: "1 of 3",
       bullets: [
         "Key UIs started to look the same",
         "If you jump to a prototype too fast, you might be converging prematurely",
@@ -499,7 +492,6 @@ export const SLIDES: Slide[] = [
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "Some experiences are\nharder to do agentically",
-      secondary: "2 of 3",
       bullets: [
         "Chat has been fashionable, but it's not always appropriate",
         "Customers get annoyed when you try to make easy things easier",
@@ -531,7 +523,6 @@ export const SLIDES: Slide[] = [
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: {
       heading: "Don't make easy things easier;\nmake hard things easier",
-      secondary: "3 of 3",
       bullets: [
         "Atlassian has many great opportunities for AI — natural language automations, format transfer, large data sets",
         "The most value we can provide to customers is making their hardest tasks easier",
@@ -580,7 +571,6 @@ export const SLIDES: Slide[] = [
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "AI to prototype\nvs AI to polish",
-      secondary: "Work is diverse; your tools should be too · 1 of 3",
       bullets: [
         "Different tools are suitable at different stages of the process",
         "Generative tools for prototyping",
@@ -621,7 +611,6 @@ export const SLIDES: Slide[] = [
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "Sometimes\nyou need a pen",
-      secondary: "Work is diverse; your tools should be too · 2 of 3",
       bullets: [
         "Engagement is a useful metric, but mandating AI for everything isn't helpful",
         "Different brains, different problems and different teams should choose the tool that suits the problem space best",
@@ -649,7 +638,6 @@ export const SLIDES: Slide[] = [
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: {
       heading: "Knowing when to\nleverage AI is a skill",
-      secondary: "Work is diverse; your tools should be too · 3 of 3",
       bullets: [
         "Identifying opportunities to automate requires understanding the capabilities deeply",
         "It also requires knowing our own capabilities — what tools are connected, what actions are available",
@@ -695,7 +683,6 @@ export const SLIDES: Slide[] = [
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "The power of a\ngood design system",
-      secondary: "A powerful automation layer has been transformational · 1 of 3",
       bullets: [
         "ADS, our design system, has been incredible leverage",
         "Our Design Systems team very quickly made an ADS MCP so agents could leverage our design system",
@@ -731,7 +718,6 @@ export const SLIDES: Slide[] = [
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "We transformed\ncontent design",
-      secondary: "A powerful automation layer has been transformational · 2 of 3",
       bullets: [
         "Unsurprisingly, Large Language Models are great at language-oriented design systems",
         "Our well-documented content design standards have been transformed into an agent and an agentic service desk",
@@ -768,7 +754,6 @@ export const SLIDES: Slide[] = [
     label: { num: "05", text: FIVE_SECTIONS[4] },
     content: {
       heading: "A personal\noperating system",
-      secondary: "A powerful automation layer has been transformational · 3 of 3",
       bullets: [
         "I created my own 'second brain' — running entirely through CLI on md files",
         "Managing a team of ten across at least 30 projects + my side quests, it's been invaluable",
