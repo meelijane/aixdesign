@@ -424,9 +424,16 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
       );
     case "quote":
       return (
-        <div className="modal-quote">
-          <blockquote>{block.text}</blockquote>
-          {block.attribution && <cite>— {block.attribution}</cite>}
+        <div className={`modal-quote ${block.image ? "modal-quote--with-image" : ""}`}>
+          {block.image && (
+            <div className="modal-quote-image">
+              <Pixel src={block.image} alt={block.attribution ?? ""} pixelSize={2} levels={8} threshold={0.03} fit="cover" contrast={1.2} brightness={1.0} />
+            </div>
+          )}
+          <div className="modal-quote-content">
+            <blockquote>"{block.text}"</blockquote>
+            {block.attribution && <cite>— {block.attribution}</cite>}
+          </div>
         </div>
       );
     case "bullets":

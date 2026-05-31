@@ -34,7 +34,7 @@ export type ModalBlock =
   | { kind: "image"; src: string; alt?: string; caption?: string; pixel?: Partial<PixelProps> }
   | { kind: "video"; src: string; caption?: string; loop?: boolean; muted?: boolean }
   | { kind: "text"; body: string | string[] }
-  | { kind: "quote"; text: string; attribution?: string }
+  | { kind: "quote"; text: string; attribution?: string; image?: string }
   | { kind: "bullets"; items: string[] }
   | { kind: "list"; items: { term: string; def: string }[] }
   | { kind: "code"; lang?: string; body: string }
@@ -375,12 +375,7 @@ export const SLIDES: Slide[] = [
       title: "Rachel Shepard — on emotional context",
       tag: "RESEARCH",
       blocks: [
-        { kind: "quote", text: "Until you understand someone's emotional context, you're not designing for them, you're designing at them.", attribution: "Rachel Shepard" },
-        { kind: "bullets", items: [
-          "B2B mistakes cascade — one bad call hits thousands of admins",
-          "Trust is built over years and lost in a single launch",
-          "Default-on / Trust-off — make the safer thing the easier thing",
-        ] },
+        { kind: "quote", text: "Until you understand someone's emotional context, you're not designing for them, you're designing at them.", attribution: "Rachel Shepard", image: "/rachel.png" },
       ],
       footer: "Source: hello.atlassian.net · Default-On Trust-Off",
     },
@@ -401,7 +396,7 @@ export const SLIDES: Slide[] = [
       ],
       modalBullet: 0,
     },
-    bg: { ascii: coloredFieldBg(9, { density: 0.5, animationStyle: "pulse", animationIntensity: 0.3 }) },
+    bg: { ascii: coloredImageAscii("/dogfood.png", 9, { vignette: 0.3, density: 1.0, contrast: 1.6, fontSize: 8 }) },
     modal: {
       title: "Studio canvas — agent builder",
       tag: "DOGFOOD",
