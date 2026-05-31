@@ -487,11 +487,6 @@ export const SLIDES: Slide[] = [
       tag: "VOC",
       blocks: [
         { kind: "quote", text: "Hindering default actions like basic thing of column deletion. Too frustrating.", attribution: "Customer · enterprise admin" },
-        { kind: "bullets", items: [
-          "Chat ≠ control. Some flows need a button, not a paragraph",
-          "Power users feel patronised by 'are you sure?' agents",
-          "First-time users feel abandoned by blank input fields",
-        ] },
       ],
       footer: "Source: in-product feedback · 2026",
     },
