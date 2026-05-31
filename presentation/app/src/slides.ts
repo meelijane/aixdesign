@@ -49,7 +49,9 @@ export type ModalBlock =
   /** Mini grid of mock UI cards (e.g. convergent 'For You' pages) */
   | { kind: "grid"; columns?: number; cards: { title: string; lines?: string[] }[] }
   /** Grid of images rendered through the pixel shader */
-  | { kind: "image-grid"; columns?: number; images: { src: string; caption?: string }[] };
+  | { kind: "image-grid"; columns?: number; images: { src: string; caption?: string }[] }
+  /** Auto-scrolling carousel — one image fills the modal, cycles through all */
+  | { kind: "image-carousel"; images: { src: string; caption?: string }[]; interval?: number };
 export type TerminalLine =
   | { type: "prompt"; user?: string; cmd: string }
   | { type: "out"; text: string }
@@ -448,8 +450,8 @@ export const SLIDES: Slide[] = [
       tag: "PATTERN ROT",
       blocks: [
         {
-          kind: "image-grid",
-          columns: 3,
+          kind: "image-carousel",
+          interval: 3000,
           images: [
             { src: "/convergent-1.png" },
             { src: "/convergent-2.png" },

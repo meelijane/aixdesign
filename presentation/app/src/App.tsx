@@ -489,6 +489,9 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
         </div>
       );
 
+    case "image-carousel":
+      return <ImageCarousel images={block.images} interval={block.interval ?? 3000} />;
+
     default:
       return null;
   }
@@ -653,6 +656,34 @@ function ChatIllustration({
         ))}
       </div>
     </div>
+  );
+}
+
+function ImageCarousel({ images, interval }: { images: { src: string; caption?: string }[]; interval: number }) {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setCurrent((c) => (c + 1) % images.length), interval);
+    return () => clearInterval(t);
+  }, [images.length, interval]);
+  return (
+    <figure className="modal-carousel">
+      <div className="modal-carousel-canvas">
+        {images.map((img, i) => (
+          <img
+            key={i}
+            src={img.src}
+            alt={img.caption ?? ""}
+            className={`modal-carousel-img ${i === current ? "active" : ""}`}
+          />
+        ))}
+        <div className="modal-carousel-dots">
+          {images.map((_, i) => (
+            <span key={i} className={`modal-carousel-dot ${i === current ? "active" : ""}`} />
+          ))}
+        </div>
+        <div className="modal-carousel-counter">{current + 1} / {images.length}</div>
+      </div>
+    </figure>
   );
 }
 
