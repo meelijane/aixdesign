@@ -362,6 +362,19 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
               aria-hidden
             />
             <Pixel src={block.src} alt={block.alt} {...(block.pixel ?? {})} />
+            {/* Animated voice indicator for voice-related screenshots */}
+            {block.src.includes("voice") && (
+              <div className="modal-voice-indicator">
+                <span className="voice-bar" />
+                <span className="voice-bar" />
+                <span className="voice-bar" />
+                <span className="voice-bar" />
+                <span className="voice-bar" />
+                <span className="voice-bar" />
+                <span className="voice-bar" />
+                <span className="voice-label">Listening…</span>
+              </div>
+            )}
           </div>
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>
