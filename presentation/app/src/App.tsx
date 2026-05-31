@@ -626,7 +626,7 @@ function FlowIllustration({
               {s.sub && <div className="modal-flow-sub">{s.sub}</div>}
             </div>
           </div>
-          {i < stages.length - 1 && <div className="modal-flow-arrow" aria-hidden>↓</div>}
+          {i < stages.length - 1 && <div className="modal-flow-arrow" aria-hidden>→</div>}
         </div>
       ))}
     </div>
