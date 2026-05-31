@@ -380,7 +380,6 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
       return (
         <figure className="modal-image">
           <div className="modal-image-canvas">
-            {/* Plain img as fallback / loading state behind the WebGL canvas */}
             <img
               className="modal-image-fallback"
               src={block.src}
@@ -388,6 +387,23 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
               aria-hidden
             />
             <Pixel src={block.src} alt={block.alt} {...(block.pixel ?? {})} />
+          </div>
+          {block.caption && <figcaption>{block.caption}</figcaption>}
+        </figure>
+      );
+
+    case "video":
+      return (
+        <figure className="modal-image">
+          <div className="modal-image-canvas modal-video-canvas">
+            <video
+              src={block.src}
+              autoPlay
+              loop={block.loop ?? true}
+              muted={block.muted ?? true}
+              playsInline
+              className="modal-video"
+            />
           </div>
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>

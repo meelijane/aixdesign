@@ -32,6 +32,7 @@ export type Layout =
 export type Palette = "color" | "phosphor";
 export type ModalBlock =
   | { kind: "image"; src: string; alt?: string; caption?: string; pixel?: Partial<PixelProps> }
+  | { kind: "video"; src: string; caption?: string; loop?: boolean; muted?: boolean }
   | { kind: "text"; body: string | string[] }
   | { kind: "quote"; text: string; attribution?: string }
   | { kind: "bullets"; items: string[] }
@@ -298,11 +299,11 @@ export const SLIDES: Slide[] = [
       tag: "PROMPTING",
       blocks: [
         {
-          kind: "image",
-          src: "/rovodev-voice.png",
-          alt: "Rovo Dev voice mode — live transcription in terminal",
+          kind: "video",
+          src: "/rovodev-voice.mov",
           caption: "Voice → CLI: speak naturally, the agent codes in real-time",
-          pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 },
+          loop: true,
+          muted: true,
         },
       ],
       footer: "Source: rovo-dev voice mode",
