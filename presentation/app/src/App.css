@@ -1086,6 +1086,7 @@
   color: var(--phosphor);
   margin: 0 0 12px;
   max-width: 70ch;
+  white-space: pre-wrap;
 }
 .modal-text p:last-child { margin-bottom: 0; }
 
