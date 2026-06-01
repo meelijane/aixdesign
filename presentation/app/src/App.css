@@ -507,7 +507,7 @@
   font-family: var(--font-mono);
   font-size: clamp(10px, 0.95vw, 16px);
   line-height: 1.1;
-  color: #FCA700;
+  color: var(--accent);
   margin: 16px 0;
   white-space: pre;
   text-shadow: 0 0 12px rgba(252, 167, 0, 0.35);
@@ -671,7 +671,7 @@
   font-size: 9px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FCA700;
+  color: var(--accent);
 }
 .overview-card-headline {
   font-family: "Cardinal Fruit", Georgia, serif;
