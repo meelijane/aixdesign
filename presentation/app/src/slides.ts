@@ -188,7 +188,7 @@ export const SLIDES: Slide[] = [
       title: "Lessons from\nthe AI frontier",
       subtitle: "Milly Schmidt · Atlassian Design · Web Directions 2026",
     },
-    bg: { ascii: { ...fieldBg, density: 0.45, animationIntensity: 0.7, vignette: 0.7 } },
+    bg: { ascii: { ...fieldBg, sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM], backgroundColor: PHOSPHOR_BG, density: 0.45, animationIntensity: 0.7, vignette: 0.7 } },
     notes:
       "Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design manager on Rovo Studio, which is part of the Central AI organisation. We are building AI with AI. This is a talk about what we've actually learned in the last year or so — the good, the awkward, the surprising.",
   },
@@ -200,7 +200,7 @@ export const SLIDES: Slide[] = [
     type: "overview",
     layout: "full",
     content: { heading: "What we'll cover", bullets: FIVE_SECTIONS },
-    bg: { ascii: { ...fieldBg, sourceColors: paletteFor(1), density: 0.4, animationIntensity: 0.4 } },
+    bg: { ascii: { ...fieldBg, sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM], backgroundColor: PHOSPHOR_BG, density: 0.4, animationIntensity: 0.4 } },
     notes: "Here's the shape of the next 25 minutes. Five lessons.",
   },
   // ═══════════════════════════════════════════════════════════════════════
@@ -743,7 +743,7 @@ export const SLIDES: Slide[] = [
     type: "summary",
     layout: "full",
     content: { heading: "In summary", bullets: FIVE_SECTIONS },
-    bg: { ascii: { ...fieldBg, sourceColors: paletteFor(0), density: 0.4, animationIntensity: 0.5 } },
+    bg: { ascii: { ...fieldBg, sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM], backgroundColor: PHOSPHOR_BG, density: 0.4, animationIntensity: 0.5 } },
     notes: "Recap the five lessons.",
   },
   // ═══════════════════════════════════════════════════════════════════════
@@ -761,7 +761,7 @@ export const SLIDES: Slide[] = [
       ],
       footer: "🐱",
     },
-    bg: { ascii: { ...fieldBg, density: 0.35, animationIntensity: 0.8 } },
+    bg: { ascii: { ...fieldBg, sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM], backgroundColor: PHOSPHOR_BG, density: 0.35, animationIntensity: 0.8 } },
     notes: "Q&A.",
   },
 ];
