@@ -105,21 +105,21 @@ const PHOSPHOR_BG = "#04120A";
 // A bigger palette to cycle through. Each entry = a pair of colors
 // (primary + secondary) used as ascii source colors. The whole presentation
 // rotates through this palette so neighbouring slides feel visually distinct.
-const SLIDE_PALETTES: [string, string][] = [
-  ["#1868DB", "#7CFFB2"],   // blue + phosphor
-  ["#FCA700", "#FF4D88"],   // amber + pink
-  ["#AF59E1", "#1868DB"],   // violet + blue
-  ["#6A9A23", "#7CFFB2"],   // moss + phosphor
-  ["#FF4D88", "#FCA700"],   // pink + amber
-  ["#00B8D9", "#7CFFB2"],   // cyan + phosphor
-  ["#AF59E1", "#FCA700"],   // violet + amber
-  ["#1868DB", "#00B8D9"],   // blue + cyan
-  ["#6A9A23", "#FCA700"],   // moss + amber
-  ["#FF4D88", "#AF59E1"],   // pink + violet
-  ["#00B8D9", "#1868DB"],   // cyan + blue
-];
-const paletteFor = (i: number): [string, string] =>
-  SLIDE_PALETTES[i % SLIDE_PALETTES.length];
+// const SLIDE_PALETTES: [string, string][] = [
+//   ["#1868DB", "#7CFFB2"],   // blue + phosphor
+//   ["#FCA700", "#FF4D88"],   // amber + pink
+//   ["#AF59E1", "#1868DB"],   // violet + blue
+//   ["#6A9A23", "#7CFFB2"],   // moss + phosphor
+//   ["#FF4D88", "#FCA700"],   // pink + amber
+//   ["#00B8D9", "#7CFFB2"],   // cyan + phosphor
+//   ["#AF59E1", "#FCA700"],   // violet + amber
+//   ["#1868DB", "#00B8D9"],   // blue + cyan
+//   ["#6A9A23", "#FCA700"],   // moss + amber
+//   ["#FF4D88", "#AF59E1"],   // pink + violet
+//   ["#00B8D9", "#1868DB"],   // cyan + blue
+// ];
+// const paletteFor = (i: number): [string, string] =>
+//   SLIDE_PALETTES[i % SLIDE_PALETTES.length];
 // Default multi-color ascii field — used for hero / section / outro slides.
 const fieldBg: Partial<AsciiProps> = {
   sourceMode: "field",
@@ -322,7 +322,7 @@ export const SLIDES: Slide[] = [
     layout: "full",
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: { heading: "Quality is\na team sport" },
-    bg: { ascii: coloredImageAscii("/hands-puzzle-dark.jpeg", 6, { vignette: 0.35, density: 1.0, contrast: 1.4, animationStyle: "none", animationIntensity: 0, animatedCharacters: false, characterCycleSpeed: 0 }) },
+    bg: { ascii: coloredImageAscii("/hands-puzzle-dark.jpeg", 6, { vignette: 0.35, density: 1.0, contrast: 1.4, animationIntensity: 0, animatedCharacters: false, characterCycleSpeed: 0 }) },
     notes: "Section opener. Pixel art idea: hands with puzzle pieces.",
   },
   // 2.1 — Lightspeed
@@ -398,7 +398,7 @@ export const SLIDES: Slide[] = [
       ],
       modalBullet: 0,
     },
-    bg: { ascii: coloredImageAscii("/dogfood.png", 9, { vignette: 0.3, density: 1.0, contrast: 1.6, fontSize: 8 }) },
+    bg: { ascii: coloredImageAscii("/dogfood.png", 9, { vignette: 0.3, density: 1.0, contrast: 1.6 }) },
     modal: {
       title: "Studio canvas — agent builder",
       tag: "DOGFOOD",
