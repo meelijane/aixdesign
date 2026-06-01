@@ -1559,8 +1559,10 @@
 }
 .modal-pipeline-sub {
   font-size: 12px;
-  color: var(--phosphor-dim);
+  font-weight: 700;
+  color: var(--phosphor);
   letter-spacing: 0.04em;
+  margin-bottom: 8px;
 }
 .modal-pipeline-body {
   font-size: 12px;
