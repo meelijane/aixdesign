@@ -1090,7 +1090,6 @@
 .modal-text p:last-child { margin-bottom: 0; }
 
 .modal-quote {
-  border-left: 2px solid var(--phosphor-border);
   padding: 6px 16px;
 }
 .modal-quote--with-image {
