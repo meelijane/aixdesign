@@ -168,6 +168,45 @@ export default function App() {
   );
   useKeyboard(handlers);
 
+  // ── Touch / tap / swipe support ─────────────────────────────────────────
+  const touchRef = useRef<{ x: number; y: number; t: number } | null>(null);
+  useEffect(() => {
+    const onStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      touchRef.current = { x: touch.clientX, y: touch.clientY, t: Date.now() };
+    };
+    const onEnd = (e: TouchEvent) => {
+      if (!touchRef.current) return;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - touchRef.current.x;
+      const dy = touch.clientY - touchRef.current.y;
+      const dt = Date.now() - touchRef.current.t;
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+      touchRef.current = null;
+
+      // Swipe detection (horizontal swipe > 50px, faster than 400ms)
+      if (absDx > 50 && absDx > absDy && dt < 400) {
+        if (dx < 0) advance();   // swipe left → next
+        else retreat();           // swipe right → prev
+        return;
+      }
+
+      // Tap detection (minimal movement, quick)
+      if (absDx < 20 && absDy < 20 && dt < 300) {
+        const w = window.innerWidth;
+        if (touch.clientX > w * 0.5) advance();   // tap right half → next
+        else retreat();                              // tap left half → prev
+      }
+    };
+    window.addEventListener("touchstart", onStart, { passive: true });
+    window.addEventListener("touchend", onEnd, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onStart);
+      window.removeEventListener("touchend", onEnd);
+    };
+  }, [advance, retreat]);
+
   // ── Broadcast to notes window via localStorage ──────────────────────────
   useEffect(() => {
     localStorage.setItem(
@@ -769,6 +808,21 @@ function SlideContent({ slide }: { slide: (typeof SLIDES)[number] }) {
         <div className="hero-inner">
           <h1 className="hero-title">{linebreaks(c.title)}</h1>
           {c.subtitle && <p className="hero-subtitle">{linebreaks(c.subtitle)}</p>}
+        </div>
+      );
+
+    case "references":
+      return (
+        <div className="references-inner">
+          <h2 className="references-heading">{c.heading}</h2>
+          <ol className="references-list">
+            {(c.references ?? []).map((ref: { label: string; url: string }, i: number) => (
+              <li key={i}>
+                <span className="references-label">{ref.label}</span>
+                <span className="references-url">{ref.url}</span>
+              </li>
+            ))}
+          </ol>
         </div>
       );
 
