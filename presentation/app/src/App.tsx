@@ -508,14 +508,14 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
           <div className="modal-pipeline-arrow">↓</div>
           <div className="modal-pipeline-stages">
             {block.stages.map((s, i) => (
-              <React.Fragment key={i}>
+              <div key={i} style={{ display: "contents" }}>
                 {i > 0 && <div className="modal-pipeline-harrow">→</div>}
                 <div className="modal-pipeline-stage">
                   <strong>{s.heading}</strong>
                   {s.sub && <span className="modal-pipeline-sub">{s.sub}</span>}
                   <span className="modal-pipeline-body">{s.body}</span>
                 </div>
-              </React.Fragment>
+              </div>
             ))}
           </div>
           <div className="modal-pipeline-arrow">↓</div>
