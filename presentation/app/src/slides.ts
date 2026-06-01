@@ -755,7 +755,7 @@ export const SLIDES: Slide[] = [
   {
     id: "thanks",
     type: "thanks",
-    content: { title: "Thank you", subtitle: "Milly Schmidt · millyschmidt.me · atlassian.design\n\ngithub.com/meelijane/aixdesign" },
+    content: { title: "Thank you", subtitle: "Milly Schmidt · millyschmidt.me · atlassian.design\n\naixdesign.millyschmidt.me\ngithub.com/meelijane/aixdesign" },
     modal: {
       title: "The real helpers",
       tag: "BONUS",
