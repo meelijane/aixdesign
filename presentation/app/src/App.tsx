@@ -81,6 +81,7 @@ function useKeyboard(handlers: Record<string, () => void>) {
 }
 
 export default function App() {
+  const isPresenterIframe = new URLSearchParams(window.location.search).has("presenter");
   const { ready, progress } = usePreloader();
 
   // Read initial slide from URL hash (e.g. #5 or #s1-iteration)
@@ -224,11 +225,12 @@ export default function App() {
     }),
     [advance, retreat, goTo, total, toggleFullscreen, toggleNotes, openNotesWindow, toggleOverview, toggleModal, modalOpen, showOverview]
   );
-  useKeyboard(handlers);
+  useKeyboard(isPresenterIframe ? {} : handlers);
 
   // ── Touch / tap / swipe support ─────────────────────────────────────────
   const touchRef = useRef<{ x: number; y: number; t: number } | null>(null);
   useEffect(() => {
+    if (isPresenterIframe) return; // no touch in preview iframe
     const onStart = (e: TouchEvent) => {
       const touch = e.touches[0];
       touchRef.current = { x: touch.clientX, y: touch.clientY, t: Date.now() };
@@ -268,6 +270,7 @@ export default function App() {
   // ── Receive commands from notes window via localStorage ──────────────
   const lastCmdTs = useRef(0);
   useEffect(() => {
+    if (isPresenterIframe) return; // don't handle commands in preview iframe
     const onStorage = (e: StorageEvent) => {
       if (e.key !== "presentation-command" || !e.newValue) return;
       try {
@@ -283,8 +286,11 @@ export default function App() {
     return () => window.removeEventListener("storage", onStorage);
   }, [advance, retreat, toggleModal]);
 
+  // (isPresenterIframe declared at top of component)
+
   // ── Broadcast to notes window via localStorage ──────────────────────────
   useEffect(() => {
+    if (isPresenterIframe) return; // don't broadcast from the preview iframe
     localStorage.setItem(
       NOTES_KEY,
       JSON.stringify({
