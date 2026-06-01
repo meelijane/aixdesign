@@ -510,7 +510,7 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
             {block.stages.map((s, i) => (
               <div key={i} style={{ display: "contents" }}>
                 {i > 0 && <div className="modal-pipeline-harrow">→</div>}
-                <div className="modal-pipeline-stage">
+                <div className={`modal-pipeline-stage ${s.heading.toLowerCase().includes("gate") ? "modal-pipeline-stage--gate" : ""}`}>
                   <strong>{s.heading}</strong>
                   {s.sub && <span className="modal-pipeline-sub">{s.sub}</span>}
                   <span className="modal-pipeline-body">{s.body}</span>
