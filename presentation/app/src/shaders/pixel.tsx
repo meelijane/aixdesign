@@ -130,7 +130,7 @@ export default function Pixel({
   pixelSize = 4, levels = 6, threshold = 0.08,
   brightness = 1.0, contrast = 1.2,
   fit = "contain", invert = false,
-  tint = "#5ABF8A",
+  tint = "#7CFFB2",
   curvature = 0.08,
   scanlineIntensity = 0.35, scanlineCount = 256,
   bloomIntensity = 0.3, vignetteStrength = 0.25,
