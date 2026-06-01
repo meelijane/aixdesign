@@ -652,7 +652,7 @@ function FlowIllustration({
     <div className="modal-flow">
       {stages.map((s, i) => (
         <div className="modal-flow-row" key={i}>
-          <div className="modal-flow-stage">
+          <div className={`modal-flow-stage ${s.label.toLowerCase().includes("critique") ? "modal-flow-stage--human" : ""}`}>
             <div className="modal-flow-num">{String(i + 1).padStart(2, "0")}</div>
             <div className="modal-flow-text">
               <div className="modal-flow-label">{s.label}</div>
