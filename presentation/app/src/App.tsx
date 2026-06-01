@@ -6,6 +6,62 @@ import "./App.css";
 
 const NOTES_KEY = "presentation-state";
 
+// ── Asset preloader ─────────────────────────────────────────────────────────
+function collectAssetUrls(): string[] {
+  const urls = new Set<string>();
+  for (const slide of SLIDES) {
+    if (slide.bg?.image) urls.add(slide.bg.image);
+    if (slide.bg?.ascii?.imageSrc) urls.add(slide.bg.ascii.imageSrc);
+    if (slide.modal) {
+      for (const block of slide.modal.blocks) {
+        if ("src" in block && typeof block.src === "string") urls.add(block.src);
+        if ("image" in block && typeof block.image === "string") urls.add(block.image);
+        if ("images" in block && Array.isArray(block.images)) {
+          for (const img of block.images) {
+            if (typeof img === "string") urls.add(img);
+            else if (img.src) urls.add(img.src);
+          }
+        }
+      }
+    }
+  }
+  return Array.from(urls);
+}
+
+function usePreloader() {
+  const [ready, setReady] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const urls = collectAssetUrls();
+    if (urls.length === 0) { setReady(true); return; }
+    let loaded = 0;
+    const total = urls.length;
+    const tick = () => { loaded++; setProgress(loaded / total); if (loaded >= total) setReady(true); };
+
+    for (const url of urls) {
+      if (url.match(/\.(mov|mp4|webm)$/i)) {
+        const v = document.createElement("video");
+        v.preload = "auto";
+        v.muted = true;
+        v.oncanplaythrough = tick;
+        v.onerror = tick;
+        v.src = url;
+      } else {
+        const img = new Image();
+        img.onload = tick;
+        img.onerror = tick;
+        img.src = url;
+      }
+    }
+
+    const t = setTimeout(() => setReady(true), 12000);
+    return () => clearTimeout(t);
+  }, []);
+
+  return { ready, progress };
+}
+
 function useKeyboard(handlers: Record<string, () => void>) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -25,6 +81,8 @@ function useKeyboard(handlers: Record<string, () => void>) {
 }
 
 export default function App() {
+  const { ready, progress } = usePreloader();
+
   // Read initial slide from URL hash (e.g. #5 or #s1-iteration)
   const [index, setIndex] = useState(() => {
     const hash = window.location.hash.slice(1);
@@ -106,8 +164,8 @@ export default function App() {
     }
     if (modalOpen) {
       setModalOpen(false);
-      // small delay so the close animation reads before advance
-      window.setTimeout(() => goTo(index + 1), 120);
+      // longer delay so the CRT close animation completes before advance
+      window.setTimeout(() => goTo(index + 1), 600);
       return;
     }
     goTo(index + 1);
@@ -234,7 +292,19 @@ export default function App() {
   }, [index, slide, total, modalOpen]);
 
   return (
-    <div className={`presentation palette-${palette}`}>
+    <>
+    {!ready && (
+      <div className="preloader">
+        <div className="preloader-inner">
+          <div className="preloader-text">Loading assets…</div>
+          <div className="preloader-bar-track">
+            <div className="preloader-bar-fill" style={{ width: `${Math.round(progress * 100)}%` }} />
+          </div>
+          <div className="preloader-pct">{Math.round(progress * 100)}%</div>
+        </div>
+      </div>
+    )}
+    <div className={`presentation palette-${palette}`} style={ready ? undefined : { visibility: "hidden" }}>
       {/* Background ASCII shader — for non-split layouts, sits behind everything */}
       {(slide.layout !== "split-right" && slide.layout !== "split-left") && (
         <div className="bg-layer bg-layout-full">
@@ -367,6 +437,7 @@ export default function App() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
