@@ -761,11 +761,11 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "References",
       references: [
-        { label: "Literature Review Agent Setup Guide", url: "hello.atlassian.net/wiki/spaces/~712020da27561b9bb14249879a9abe6a41ad1c/pages/6698141159" },
-        { label: "The Path to AI-native: Our Design Commitments", url: "hello.atlassian.net/wiki/spaces/XDO/blog/2026/04/30/6947637720" },
-        { label: "Default-On, Trust-Off", url: "hello.atlassian.net/wiki/spaces/~712020ba168fbad22848eab3a2730df156e4f8/pages/6394347884" },
-        { label: "ADS Remote MCP Server", url: "hello.atlassian.net/wiki/spaces/DST/blog/2026/03/10/6396240641" },
-        { label: "Design Technology at Atlassian", url: "hello.atlassian.net/wiki/spaces/DST/blog/2026/02/17/6385528678" },
+        { label: "Literature Review Agent Setup Guide", url: "" },
+        { label: "The Path to AI-native: Our Design Commitments", url: "" },
+        { label: "Default-On, Trust-Off", url: "" },
+        { label: "ADS Remote MCP Server", url: "atlassian.design" },
+        { label: "Design Technology at Atlassian", url: "" },
       ],
     },
     bg: { ascii: coloredFieldBg(20, { density: 0.3, animationIntensity: 0.2 }) },

@@ -819,7 +819,7 @@ function SlideContent({ slide }: { slide: (typeof SLIDES)[number] }) {
             {(c.references ?? []).map((ref: { label: string; url: string }, i: number) => (
               <li key={i}>
                 <span className="references-label">{ref.label}</span>
-                <span className="references-url">{ref.url}</span>
+                {ref.url && <span className="references-url">{ref.url}</span>}
               </li>
             ))}
           </ol>
