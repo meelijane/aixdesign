@@ -265,6 +265,24 @@ export default function App() {
     };
   }, [advance, retreat]);
 
+  // ── Receive commands from notes window via localStorage ──────────────
+  const lastCmdTs = useRef(0);
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== "presentation-command" || !e.newValue) return;
+      try {
+        const { cmd, ts } = JSON.parse(e.newValue);
+        if (ts <= lastCmdTs.current) return; // already handled
+        lastCmdTs.current = ts;
+        if (cmd === "advance") advance();
+        else if (cmd === "retreat") retreat();
+        else if (cmd === "toggle-modal") toggleModal();
+      } catch {}
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [advance, retreat, toggleModal]);
+
   // ── Broadcast to notes window via localStorage ──────────────────────────
   useEffect(() => {
     localStorage.setItem(

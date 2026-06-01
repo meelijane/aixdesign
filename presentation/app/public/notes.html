@@ -251,6 +251,18 @@
     }
   });
 
+  // ── Send navigation commands back to the main window ────────
+  document.addEventListener('keydown', (e) => {
+    let cmd = null;
+    if (e.key === 'ArrowRight' || e.key === ' ') cmd = 'advance';
+    else if (e.key === 'ArrowLeft') cmd = 'retreat';
+    else if (e.key === 'm' || e.key === 'M') cmd = 'toggle-modal';
+    if (cmd) {
+      e.preventDefault();
+      localStorage.setItem('presentation-command', JSON.stringify({ cmd, ts: Date.now() }));
+    }
+  });
+
   // Also poll in case we missed the initial event
   setInterval(() => {
     const raw = localStorage.getItem('presentation-state');
