@@ -31,7 +31,7 @@ export type Layout =
   | "bare";
 export type Palette = "color" | "phosphor";
 export type ModalBlock =
-  | { kind: "image"; src: string; alt?: string; caption?: string; pixel?: Partial<PixelProps> }
+  | { kind: "image"; src: string; alt?: string; caption?: string; pixel?: Partial<PixelProps>; dark?: boolean }
   | { kind: "video"; src: string; caption?: string; loop?: boolean; muted?: boolean }
   | { kind: "text"; body: string | string[] }
   | { kind: "quote"; text: string; attribution?: string; image?: string }
@@ -584,7 +584,7 @@ export const SLIDES: Slide[] = [
       title: "Notebook plan — for this talk",
       tag: "ARTEFACT",
       blocks: [
-        { kind: "image", src: "/pen.jpg", alt: "Notebook plan for this talk", caption: "The actual notebook · scrawled before any pixel was placed", pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 } },
+        { kind: "image", src: "/pen.jpg", alt: "Notebook plan for this talk", caption: "The actual notebook · scrawled before any pixel was placed", dark: true },
       ],
       footer: "Photo: Milly's notebook",
     },

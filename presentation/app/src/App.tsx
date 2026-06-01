@@ -394,7 +394,7 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
         <figure className="modal-image">
           <div className="modal-image-canvas">
             <img
-              className="modal-image-crt"
+              className={`modal-image-crt ${block.dark ? "modal-image-crt--dark" : ""}`}
               src={block.src}
               alt={block.alt ?? ""}
             />
