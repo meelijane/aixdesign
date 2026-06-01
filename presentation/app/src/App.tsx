@@ -104,6 +104,30 @@ export default function App() {
   const hasModal = !!slide.modal;
   const palette = slide.palette ?? "color";
 
+  // ── Presenter iframe: listen for state from main window ──────────────
+  useEffect(() => {
+    if (!isPresenterIframe) return;
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== NOTES_KEY || !e.newValue) return;
+      try {
+        const state = JSON.parse(e.newValue);
+        setIndex(state.current);
+        setModalOpen(!!state.modalOpen);
+      } catch {}
+    };
+    window.addEventListener("storage", onStorage);
+    // Also poll on mount in case we missed the initial event
+    const raw = localStorage.getItem(NOTES_KEY);
+    if (raw) {
+      try {
+        const state = JSON.parse(raw);
+        setIndex(state.current);
+        setModalOpen(!!state.modalOpen);
+      } catch {}
+    }
+    return () => window.removeEventListener("storage", onStorage);
+  }, [isPresenterIframe]);
+
   // ── URL ↔ slide sync ─────────────────────────────────────────────────
   // Guard to prevent the hashchange listener from re-entering setIndex
   // when we ourselves are the ones who set the hash.
