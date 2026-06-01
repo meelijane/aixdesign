@@ -438,7 +438,7 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
             </div>
           )}
           <div className="modal-quote-content">
-            <blockquote>"{block.text}"</blockquote>
+            <blockquote>"{linebreaks(block.text)}"</blockquote>
             {block.attribution && <cite>— {block.attribution}</cite>}
           </div>
         </div>
