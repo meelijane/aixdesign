@@ -373,10 +373,12 @@ Content design + LLM is a natural fit.
 - Time overview - stats about how much I've travelled and how much time I've spent in meetings over my four year tenure
 - TEAM companion - a small web app to manager my shifts on the booth and review the TEAM conference agenda at the same time
 - an OKR visualiser that shows how any piece of work maps to relevant OKRs
-- This slide deck!
 - An agent that manages our design review process
 - An agent that triages incoming UX feedback into work items
 - An automation that generates my team's weekly meeting agenda notes.
+
+- This slide deck!
+
 
 ---
 
