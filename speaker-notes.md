@@ -11,7 +11,11 @@ Edit the notes below each slide. Keep the slide headers and content as-is.
 
 **Notes:**
 
-Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design manager on Rovo Studio, which is part of the Central AI organisation. We are building AI with AI. This is a talk about what we've actually learned in the last year or so — the good, the awkward, the surprising.
+- Hi, I'm Milly. 
+- I've been at Atlassian for four years
+- design manager on Rovo Studio, Central AI
+- We are building AI with AI.
+- This is a talk about what we've actually learned in the last year or so — on both the tooling and the product space.
 
 ---
 
@@ -28,7 +32,8 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 
 **Notes:**
 
-Here's the shape of the next 25 minutes. Five lessons.
+- 25 minutes so 5 x 5 roughly
+- Slides will be available at the end.
 
 ---
 
@@ -38,7 +43,8 @@ Here's the shape of the next 25 minutes. Five lessons.
 
 **Notes:**
 
-Context is the single most important ingredient for good AI output.
+- You may have heard this phrase before
+- Now I have lived it.
 
 ---
 
@@ -53,7 +59,10 @@ Context is the single most important ingredient for good AI output.
 
 **Notes:**
 
-Lead with org context. The graph is unglamorous infrastructure that makes the magic possible.
+- The teamwork graph was the star of our recent TEAM conference
+- All enterprise AI is make or break on its underlying access to data
+- Relevancy is everything when AI is suggesting.
+- TWG is hard to imagine, but it's everywhere - in your chat responses, in your briefings, in your suggested edits, in your drafted work items, even sometimes in your meeting scheduling
 
 ---
 
@@ -68,7 +77,12 @@ Lead with org context. The graph is unglamorous infrastructure that makes the ma
 
 **Notes:**
 
-Personal context: the org graph gives you shared context. Personal context makes the response feel made for you. Loom is the unlock.
+- If the TWG connects all the info in the cloud that is made by your org...
+- The personal graph is really all the info that's in your head
+- As a read/write culture we do write a lot, but not EVERYTHING
+- It's amazing how much rich context you don't capture that only happens verbally
+- It's also a huge deal how much stuff you probably don't want to put on Confluence - e.g. your personal growth plan or your feedback for this person etc. Maybe it's there but it's locked down.
+- This is what people talk about when they think they've unlocked "sentient chatgpt" - it's essentially the context that can be extracted from you organically.
 
 ---
 
@@ -83,7 +97,10 @@ Personal context: the org graph gives you shared context. Personal context makes
 
 **Notes:**
 
-Specificity + iteration.
+- Specificity makes a huge difference
+- For me, voice allows me to explain naturally, in an unstructured way
+- Rovo is excellent at bringing that messy thought dump into a structured artifact
+- I often use Rovo to write prompts to create agents, for example.
 
 ---
 
@@ -93,7 +110,8 @@ Specificity + iteration.
 
 **Notes:**
 
-Quality requires intention. Speed without care creates technical and trust debt.
+- As all the roles have blurred together (pm doing design, design doing eng, etc) there has been a focus on shipping
+- but we are increasingly finding quality needs to be aligned across crafts too.
 
 ---
 
@@ -108,7 +126,11 @@ Quality requires intention. Speed without care creates technical and trust debt.
 
 **Notes:**
 
-Industry is fast. Atlassian's response: slow down to speed up.
+- Although our AI transformation has been rapid
+- We are also taking time out to learn new things regularly
+- A couple of weeks ago I flew to Sydney to teach 200 designers how to open PRs and vibe code
+- Our builders weeks have really helped the rising tide lift all boats
+- But AI skills are only part of this - it's important to keep our customers in mind too.
 
 ---
 
@@ -123,7 +145,10 @@ Industry is fast. Atlassian's response: slow down to speed up.
 
 **Notes:**
 
-Trust takes a long time to build and a moment to lose.
+- We build software for enterprise customers
+- Riley's talk will go really deep here
+- But we are holding tension between the need to ship fast for industry and our customers sometimes telling us to slow tf down
+- Decisions about AI have a lot of industry momentum but our customers don't want to turn on something half baked
 
 ---
 
@@ -148,7 +173,8 @@ Dogfooding is in our DNA.
 
 **Notes:**
 
-Knowing when to use AI and when not to is a strategic skill.
+- One great way to increase quality is to make it a clear goal every craft is working towards
+- But as a 15,000 person company, teams will still diverge and duplicate work all the time 
 
 ---
 
@@ -163,7 +189,10 @@ Knowing when to use AI and when not to is a strategic skill.
 
 **Notes:**
 
-Convergence is the silent killer.
+- What's the most obvious drawback of designing too fast? Premature convergence
+- I noticed a bunch of our key screens started to look basically the same 
+- We also heard users finding them confusing - why can't I create a Confluence page from Studio?
+- The speed of the process + the nature of the tools (which already output "averaged" ideas) 
 
 ---
 
@@ -178,7 +207,11 @@ Convergence is the silent killer.
 
 **Notes:**
 
-Chat isn't the answer to everything.
+- A big example of this premature convergence was the chat pattern
+- Example: hub builder, which is a website builder - chat was less fun than just direct selection of elements
+- We also know that our customers find chat/AI sometimes gets in the way
+- Example: turn by turn information gathering vs all in one go
+- It's a huge customer base and we have to support their varying preferences.
 
 ---
 
@@ -233,7 +266,10 @@ Stop arguing about which AI tool is best.
 
 **Notes:**
 
-Mandates feel awful.
+- We have had some token leaderboards go around, but ultimately have moved away from this
+- As much as we want to see the stats reveal that AI usage is increasing...
+- Different people think differently and different tools are needed for different tasks
+- Personal reflection on AI tools - life drawing example
 
 ---
 
@@ -248,7 +284,12 @@ Mandates feel awful.
 
 **Notes:**
 
-Three skills.
+- As a technical person (I was a software eng before I was a designer) I think I have underestimated this bit
+- The instinct for understanding opportunities for automation is hard to teach
+- You also get it honed from experience
+- That means everyone has to be experimenting and building their intuitive understanding of the capabilities - which can be challenging from an org rollout perspective and the needs of security and trust, but also can be challenging when the tools are constantly evolving
+- I am finding myself revisiting things that didn't work and finding they suddenly are now possible, because stuff is shipping so fast
+- This kind of motion is very different to the way designers used to work -  I know Figma, I use Figma. It's closer to the metal.
 
 ---
 
@@ -258,7 +299,7 @@ Three skills.
 
 **Notes:**
 
-Let AI do the tedious work so you can focus on the creative and strategic work.
+- This is a reference to a now very old meme that I think about a lot.
 
 ---
 
@@ -273,7 +314,9 @@ Let AI do the tedious work so you can focus on the creative and strategic work.
 
 **Notes:**
 
-Design systems become AI superchargers.
+- Our award-winning design system has been a huge part of our success with design adoption of AI
+- Being able to leverage our design system in replit, cursor, figma make - and not just the designs, but the CODE
+- Our design technologists have unlocked so much amazing stuff for us, including developing prototyping repos and skills like "polish" and "tokenize"
 
 ---
 
@@ -303,7 +346,12 @@ Content design + LLM is a natural fit.
 
 **Notes:**
 
-Personal OS = the second brain.
+- In some ways this has been actually the biggest unlock for me, as a manager
+- Story: Brendan asked me if I had "set up my AI assistant" a few months ago
+- It's all just folders of markdown files, but it's highly linked - as you can see in this graph generated by Obsidian
+- This is my biggest and most used project - literally every day, ingesting the trancripts of every meeting, it's connected to Slack, the TWG as well as the cache of private md files on my desktop
+- I will be using this system to do my own performance review documentation in a few weeks
+
 
 ---
 
@@ -320,7 +368,15 @@ Personal OS = the second brain.
 
 **Notes:**
 
-Recap the five lessons.
+- I have built a number of other "personal apps" with productivity (and fun) in mind
+- Meeting manager - opens my zoom window and the relevant Confluence page simultaneously using window tiling
+- Time overview - stats about how much I've travelled and how much time I've spent in meetings over my four year tenure
+- TEAM companion - a small web app to manager my shifts on the booth and review the TEAM conference agenda at the same time
+- an OKR visualiser that shows how any piece of work maps to relevant OKRs
+- This slide deck!
+- An agent that manages our design review process
+- An agent that triages incoming UX feedback into work items
+- An automation that generates my team's weekly meeting agenda notes.
 
 ---
 
@@ -340,7 +396,7 @@ References for further reading.
 
 **Notes:**
 
-Q&A.
+- The url is the best way to capture slides. It's all custom.
 
 ---
 
