@@ -421,7 +421,7 @@ export const SLIDES: Slide[] = [
     label: { num: "03", text: FIVE_SECTIONS[2] },
     content: { heading: "Strategic\nalignment matters" },
     bg: { ascii: coloredFieldBg(10, { density: 0.55, animationStyle: "reveal", animationIntensity: 0.4 }) },
-    notes: "Section opener. Pixel art idea: arrows pointing in different directions converging on a point.",
+    notes: "Knowing when to use AI and when not to is a strategic skill.",
   },
   // 3.1 — Convergent
   {
@@ -532,7 +532,7 @@ export const SLIDES: Slide[] = [
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: { heading: "Right tool\nfor the job" },
     bg: { ascii: coloredImageAscii("/tools-dark.png", 3, { vignette: 0.35, density: 0.9, animationStyle: "pulse", animationIntensity: 0.3 }) },
-    notes: "Section opener. Pixel art idea: flat lay of a set of tools.",
+    notes: "Match the tool to the job. AI is one tool among many.",
   },
   // 4.1 — Prototype/polish
   {
