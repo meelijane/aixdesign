@@ -476,7 +476,7 @@ export const SLIDES: Slide[] = [
       title: "Customer feedback · verbatim",
       tag: "VOC",
       blocks: [
-        { kind: "quote", text: "Hindering default actions like basic thing of column deletion. Too frustrating.", attribution: "Customer · enterprise admin" },
+        { kind: "quote", text: "Hindering default actions like basic thing of column deletion.\nToo frustrating.", attribution: "Customer · enterprise admin" },
       ],
       footer: "Source: in-product feedback · 2026",
     },
