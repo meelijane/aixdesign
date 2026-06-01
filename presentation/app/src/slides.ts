@@ -186,7 +186,7 @@ export const SLIDES: Slide[] = [
     type: "hero",
     content: {
       title: "Lessons from\nthe AI frontier",
-      subtitle: "Milly Schmidt · Atlassian Design · Web Directions 2026",
+      subtitle: "Milly Schmidt · Atlassian Design · AI × Design 2026",
     },
     bg: { ascii: { ...fieldBg, sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM], backgroundColor: PHOSPHOR_BG, density: 0.45, animationIntensity: 0.7, vignette: 0.7 } },
     notes:
