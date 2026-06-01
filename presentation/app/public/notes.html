@@ -87,6 +87,11 @@
       transform: scale(0.25);
       border: none;
       pointer-events: none;
+      opacity: 1;
+    }
+    /* Fallback sizing if JS hasn't fired yet */
+    #preview-wrap {
+      min-height: 200px;
     }
     #notes-col {
       display: flex;
@@ -281,8 +286,12 @@
 
   // ── Receive state from main window via localStorage ────────
   function handleState(state) {
+    const wasHidden = $container.style.display === 'none';
     $waiting.style.display   = 'none';
     $container.style.display = 'grid';
+
+    // Scale preview after container becomes visible
+    if (wasHidden) requestAnimationFrame(scalePreview);
 
     startTimer();
 
