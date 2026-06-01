@@ -1515,8 +1515,8 @@
 .modal-pipeline-bookend {
   border: 1px solid var(--phosphor-border);
   background: rgba(124, 255, 178, 0.06);
-  padding: 10px 20px;
-  font-size: 13px;
+  padding: 12px 24px;
+  font-size: 16px;
   letter-spacing: 0.06em;
   text-align: center;
   max-width: 90%;
@@ -1552,7 +1552,7 @@
   min-width: 0;
 }
 .modal-pipeline-stage strong {
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--phosphor);
