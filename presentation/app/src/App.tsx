@@ -332,6 +332,8 @@ export default function App() {
             title: s.content?.title,
             heading: s.content?.heading,
             quote: s.content?.quote,
+            bullets: s.content?.bullets,
+            body: s.content?.body,
           },
         })),
         t: Date.now(),
