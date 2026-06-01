@@ -66,12 +66,20 @@ export type ChatMessage = {
   text: string;
   time?: string;
 };
+export type ModalPage = {
+  title?: string;
+  tag?: string;
+  blocks: ModalBlock[];
+  footer?: string;
+};
 export type Modal = {
   title: string;
   tag?: string;
   blocks: ModalBlock[];
   footer?: string;
   todo?: boolean;
+  /** Additional pages — pressing → cycles through them */
+  pages?: ModalPage[];
 };
 export type Slide = {
   id: string;
@@ -737,6 +745,16 @@ export const SLIDES: Slide[] = [
         },
       ],
       footer: "Source: milly-os · personal · MIT",
+      pages: [
+        {
+          title: "milly-os :: personal graph",
+          tag: "PERSONAL OS · GRAPH",
+          blocks: [
+            { kind: "image", src: "/os-graph.png", alt: "Personal knowledge graph", caption: "My personal knowledge graph — every project, person, and decision connected" },
+          ],
+          footer: "Source: milly-os · personal graph",
+        },
+      ],
     },
     notes: "Personal OS = the second brain.",
   },

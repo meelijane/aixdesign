@@ -96,6 +96,7 @@ export default function App() {
   const [showNotes, setShowNotes] = useState(false);
   const [showOverview, setShowOverview] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalPage, setModalPage] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const fadeRef = useRef<number | null>(null);
 
@@ -185,16 +186,25 @@ export default function App() {
   const advance = useCallback(() => {
     if (hasModal && !modalOpen) {
       setModalOpen(true);
+      setModalPage(0);
       return;
     }
     if (modalOpen) {
+      // If there are more pages, advance to the next page
+      const totalPages = 1 + (slide.modal?.pages?.length ?? 0);
+      if (modalPage < totalPages - 1) {
+        setModalPage(modalPage + 1);
+        return;
+      }
+      // Last page — close modal and advance
       setModalOpen(false);
+      setModalPage(0);
       // longer delay so the CRT close animation completes before advance
       window.setTimeout(() => goTo(index + 1), 600);
       return;
     }
     goTo(index + 1);
-  }, [hasModal, modalOpen, goTo, index]);
+  }, [hasModal, modalOpen, modalPage, slide, goTo, index]);
 
   const retreat = useCallback(() => {
     if (modalOpen) {
@@ -206,7 +216,10 @@ export default function App() {
 
   const toggleModal = useCallback(() => {
     if (!hasModal) return;
-    setModalOpen((v) => !v);
+    setModalOpen((v) => {
+      if (v) setModalPage(0); // reset page on close
+      return !v;
+    });
   }, [hasModal]);
 
   const toggleFullscreen = useCallback(() => {
@@ -445,7 +458,8 @@ export default function App() {
         <ModalLayer
           modal={slide.modal!}
           open={modalOpen}
-          onClose={() => setModalOpen(false)}
+          onClose={() => { setModalOpen(false); setModalPage(0); }}
+          page={modalPage}
         />
       )}
 
@@ -496,11 +510,21 @@ function ModalLayer({
   modal,
   open,
   onClose,
+  page = 0,
 }: {
   modal: Modal;
   open: boolean;
   onClose: () => void;
+  page?: number;
 }) {
+  // Resolve which page to show: page 0 = base modal, page 1+ = modal.pages[n-1]
+  const currentPage = page === 0 ? modal : (modal.pages?.[page - 1] ?? modal);
+  const totalPages = 1 + (modal.pages?.length ?? 0);
+  const title = currentPage.title ?? modal.title;
+  const tag = currentPage.tag ?? modal.tag;
+  const blocks = currentPage.blocks;
+  const footer = currentPage.footer ?? modal.footer;
+
   return (
     <div
       className={`modal-layer ${open ? "open" : ""}`}
@@ -511,8 +535,9 @@ function ModalLayer({
         {/* CRT scanlines + glow are applied via CSS on .modal-frame */}
         <div className="modal-titlebar">
           <span className="modal-titlebar-corner" aria-hidden>◤</span>
-          <span className="modal-title">{modal.title}</span>
-          {modal.tag && <span className="modal-tag">{modal.tag}</span>}
+          <span className="modal-title">{title}</span>
+          {tag && <span className="modal-tag">{tag}</span>}
+          {totalPages > 1 && <span className="modal-page-indicator">{page + 1} / {totalPages}</span>}
           <button
             className="modal-close"
             onClick={onClose}
@@ -523,14 +548,14 @@ function ModalLayer({
         </div>
 
         <div className="modal-body">
-          {modal.blocks.map((block, i) => (
+          {blocks.map((block, i) => (
             <ModalBlockView key={i} block={block} />
           ))}
         </div>
 
-        {modal.footer && (
+        {footer && (
           <div className="modal-footer">
-            <span>{modal.footer}</span>
+            <span>{footer}</span>
             {modal.todo && <span className="modal-todo">TODO</span>}
           </div>
         )}
