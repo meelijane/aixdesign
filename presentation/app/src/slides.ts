@@ -217,7 +217,7 @@ export const SLIDES: Slide[] = [
     label: { num: "01", text: FIVE_SECTIONS[0] },
     content: { heading: "Garbage in,\ngarbage out" },
     bg: { ascii: coloredImageAscii("/garbage.jpg", 2, { vignette: 0.45, density: 0.85, animationStyle: "pulse", animationIntensity: 0.3 }) },
-    notes: "Section opener — garbage can image offset right so the heading sits clear on the left.",
+    notes: "Context is the single most important ingredient for good AI output.",
   },
   // 1.1 — Org context
   {
@@ -325,7 +325,7 @@ export const SLIDES: Slide[] = [
     label: { num: "02", text: FIVE_SECTIONS[1] },
     content: { heading: "Quality is\na team sport" },
     bg: { ascii: coloredImageAscii("/hands-puzzle-dark.jpeg", 6, { vignette: 0.35, density: 1.0, contrast: 1.4, animationIntensity: 0, animatedCharacters: false, characterCycleSpeed: 0 }) },
-    notes: "Section opener. Pixel art idea: hands with puzzle pieces.",
+    notes: "Quality requires intention. Speed without care creates technical and trust debt.",
   },
   // 2.1 — Lightspeed
   {
@@ -645,7 +645,7 @@ export const SLIDES: Slide[] = [
         { kind: "image", src: "/ai-dishes.jpg", alt: "AI doing the dishes", caption: "Let AI handle the tedious work so you can focus on what matters", pixel: { pixelSize: 2, levels: 8, threshold: 0.03, fit: "cover", contrast: 1.2, brightness: 1.0 } },
       ],
     },
-    notes: "Section opener. Pixel art idea: a lobster claw.",
+    notes: "Let AI do the tedious work so you can focus on the creative and strategic work.",
   },
   // 5.1 — DS
   {
