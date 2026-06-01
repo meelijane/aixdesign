@@ -79,13 +79,49 @@
     }
     #slide-title em { font-style: italic; color: var(--accent1); }
 
-    #notes-text {
-      font-size: clamp(1rem, 1.8vw, 1.4rem);
+    #slide-content {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      line-height: 1.5;
+      color: var(--accent2);
+      max-width: 72ch;
+    }
+    #slide-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    #slide-content li {
+      padding: 4px 0;
+    }
+    #slide-content li::before {
+      content: "→ ";
+      color: var(--dim);
+    }
+    #notes-divider {
+      border-top: 1px solid #222235;
+      margin: 0.5rem 0;
+    }
+    #notes-heading {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    #notes-list {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
       font-weight: 300;
       line-height: 1.7;
       color: var(--fg);
-      white-space: pre-wrap;
       max-width: 72ch;
+      list-style: none;
+      padding: 0;
+    }
+    #notes-list li {
+      padding: 4px 0;
+    }
+    #notes-list li::before {
+      content: "• ";
+      color: var(--accent1);
     }
 
     /* ── Next slide preview ─────────────────────────────────── */
@@ -154,7 +190,10 @@
   <div id="notes-body">
     <div id="slide-label"></div>
     <div id="slide-title"></div>
-    <div id="notes-text"></div>
+    <div id="slide-content"></div>
+    <div id="notes-divider"></div>
+    <div id="notes-heading">// TALKING POINTS</div>
+    <ul id="notes-list"></ul>
   </div>
 
   <div>
@@ -178,7 +217,8 @@
   const $timer     = document.getElementById('timer');
   const $label     = document.getElementById('slide-label');
   const $title     = document.getElementById('slide-title');
-  const $notes     = document.getElementById('notes-text');
+  const $content   = document.getElementById('slide-content');
+  const $notesList = document.getElementById('notes-list');
   const $nextTitle = document.getElementById('next-title');
   const $fill      = document.getElementById('progress-fill');
 
@@ -225,8 +265,28 @@
     const titleText = c.title || c.heading || c.quote || c.label || slide.type;
     $title.innerHTML = titleText || '';
 
-    // Notes
-    $notes.textContent = slide.notes || '—';
+    // Slide content (bullets/body)
+    const bullets = c.bullets || c.body || [];
+    if (Array.isArray(bullets) && bullets.length) {
+      $content.innerHTML = '<ul>' + bullets.map(b => `<li>${b}</li>`).join('') + '</ul>';
+    } else if (typeof bullets === 'string') {
+      $content.textContent = bullets;
+    } else {
+      $content.textContent = '';
+    }
+
+    // Notes as dot points
+    const notesText = slide.notes || '';
+    if (notesText) {
+      const points = notesText.split(/[.!?]\s+/).filter(s => s.trim());
+      if (points.length > 1) {
+        $notesList.innerHTML = points.map(p => `<li>${p.trim()}</li>`).join('');
+      } else {
+        $notesList.innerHTML = `<li>${notesText}</li>`;
+      }
+    } else {
+      $notesList.innerHTML = '<li>—</li>';
+    }
 
     // Next slide
     if (next) {
