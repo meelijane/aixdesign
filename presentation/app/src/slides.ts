@@ -51,7 +51,9 @@ export type ModalBlock =
   /** Grid of images rendered through the pixel shader */
   | { kind: "image-grid"; columns?: number; images: { src: string; caption?: string }[] }
   /** Auto-scrolling carousel — one image fills the modal, cycles through all */
-  | { kind: "image-carousel"; images: { src: string; caption?: string }[]; interval?: number };
+  | { kind: "image-carousel"; images: { src: string; caption?: string }[]; interval?: number }
+  /** Pipeline diagram — input at top, stages as columns, output at bottom */
+  | { kind: "pipeline"; input: string; output: string; stages: { heading: string; sub?: string; body: string }[] };
 export type TerminalLine =
   | { type: "prompt"; user?: string; cmd: string }
   | { type: "out"; text: string }
@@ -502,7 +504,17 @@ export const SLIDES: Slide[] = [
       title: "Literature Review · three-agent pipeline",
       tag: "RESEARCH",
       blocks: [
-        { kind: "text", body: "[You provide: Topic + Keywords + Sources (optional)]\n       ↓\nStage 1: Research_Synthesizer → \"State of the Research\"\n   Reads all sources, extracts direct quotes, classifies evidence\n       ↓\nStage 2: Integrity_Auditor → Integrity Audit Report\n   Independently verifies every quote, checks Jira statuses,\n   catches hallucinations, validates search completeness\n       ↓\n   QUALITY GATE: If Quote Accuracy < 80%, report flagged as unreliable\n       ↓\nStage 3: Insight_Critic → Gap Analysis & Critique\n   Finds contradictions, sample bias, assigns Research\n   Maturity Scores per theme, identifies what's missing\n       ↓\n[Final: Verified Literature Review with confidence ratings]" },
+        {
+          kind: "pipeline",
+          input: "You provide: Topic + Keywords + Sources (optional)",
+          output: "Verified Literature Review with confidence ratings",
+          stages: [
+            { heading: "Stage 1: Research_Synthesizer", sub: "→ \"State of the Research\"", body: "Reads all sources, extracts direct quotes, classifies evidence" },
+            { heading: "Stage 2: Integrity_Auditor", sub: "→ Integrity Audit Report", body: "Independently verifies every quote, checks Jira statuses, catches hallucinations, validates search completeness" },
+            { heading: "⚠ Quality Gate", sub: "", body: "If Quote Accuracy < 80%, report flagged as unreliable" },
+            { heading: "Stage 3: Insight_Critic", sub: "→ Gap Analysis & Critique", body: "Finds contradictions, sample bias, assigns Research Maturity Scores per theme, identifies what's missing" },
+          ],
+        },
       ],
       footer: "Source: hello.atlassian.net · Literature Review Agent",
     },

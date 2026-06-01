@@ -499,6 +499,32 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
     case "image-carousel":
       return <ImageCarousel images={block.images} interval={block.interval ?? 3000} />;
 
+    case "pipeline":
+      return (
+        <div className="modal-pipeline">
+          <div className="modal-pipeline-bookend">
+            <span>{block.input}</span>
+          </div>
+          <div className="modal-pipeline-arrow">↓</div>
+          <div className="modal-pipeline-stages">
+            {block.stages.map((s, i) => (
+              <React.Fragment key={i}>
+                {i > 0 && <div className="modal-pipeline-harrow">→</div>}
+                <div className="modal-pipeline-stage">
+                  <strong>{s.heading}</strong>
+                  {s.sub && <span className="modal-pipeline-sub">{s.sub}</span>}
+                  <span className="modal-pipeline-body">{s.body}</span>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="modal-pipeline-arrow">↓</div>
+          <div className="modal-pipeline-bookend">
+            <span>{block.output}</span>
+          </div>
+        </div>
+      );
+
     default:
       return null;
   }

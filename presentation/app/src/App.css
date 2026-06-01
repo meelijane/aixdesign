@@ -1503,6 +1503,72 @@
   opacity: 0.82;
 }
 
+/* ── Pipeline diagram ────────────────────────────────────────────────── */
+.modal-pipeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  font-family: var(--mono);
+  color: var(--phosphor);
+}
+.modal-pipeline-bookend {
+  border: 1px solid var(--phosphor-border);
+  background: rgba(124, 255, 178, 0.06);
+  padding: 10px 20px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  max-width: 90%;
+}
+.modal-pipeline-arrow {
+  font-size: 18px;
+  opacity: 0.55;
+  padding: 6px 0;
+}
+.modal-pipeline-stages {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+}
+.modal-pipeline-harrow {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  opacity: 0.55;
+  padding: 0 6px;
+  flex-shrink: 0;
+}
+.modal-pipeline-stage {
+  flex: 1;
+  border: 1px solid var(--phosphor-border);
+  background: rgba(124, 255, 178, 0.04);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  min-width: 0;
+}
+.modal-pipeline-stage strong {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--phosphor);
+}
+.modal-pipeline-sub {
+  font-size: 11px;
+  color: var(--phosphor-dim);
+  letter-spacing: 0.04em;
+}
+.modal-pipeline-body {
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--phosphor-dim);
+  opacity: 0.8;
+}
+
 /* ── Image carousel ──────────────────────────────────────────────────── */
 .modal-carousel {
   margin: 0;
