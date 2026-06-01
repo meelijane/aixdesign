@@ -502,17 +502,7 @@ export const SLIDES: Slide[] = [
       title: "Literature Review · three-agent pipeline",
       tag: "RESEARCH",
       blocks: [
-        {
-          kind: "flow",
-          stages: [
-            { label: "INPUT", sub: "Topic + keywords + sources" },
-            { label: "SYNTHESIZE", sub: "Extract quotes, classify evidence" },
-            { label: "AUDIT", sub: "Verify quotes, catch hallucinations" },
-            { label: "⚠ GATE", sub: "Quote accuracy ≥ 80%" },
-            { label: "CRITIQUE", sub: "Gaps, bias, maturity scores" },
-            { label: "OUTPUT", sub: "Verified review + confidence" },
-          ],
-        },
+        { kind: "text", body: "[You provide: Topic + Keywords + Sources (optional)]\n       ↓\nStage 1: Research_Synthesizer → \"State of the Research\"\n   Reads all sources, extracts direct quotes, classifies evidence\n       ↓\nStage 2: Integrity_Auditor → Integrity Audit Report\n   Independently verifies every quote, checks Jira statuses,\n   catches hallucinations, validates search completeness\n       ↓\n   QUALITY GATE: If Quote Accuracy < 80%, report flagged as unreliable\n       ↓\nStage 3: Insight_Critic → Gap Analysis & Critique\n   Finds contradictions, sample bias, assigns Research\n   Maturity Scores per theme, identifies what's missing\n       ↓\n[Final: Verified Literature Review with confidence ratings]" },
       ],
       footer: "Source: hello.atlassian.net · Literature Review Agent",
     },
