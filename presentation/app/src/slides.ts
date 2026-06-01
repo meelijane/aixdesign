@@ -137,7 +137,7 @@ const fieldBg: Partial<AsciiProps> = {
 const coloredFieldBg = (_index: number, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   ...fieldBg,
   sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM],
-  colorMode: "source",
+  colorMode: "green-terminal",
   backgroundColor: PHOSPHOR_BG,
   backgroundMode: "solid-black",
   density: 0.5,
@@ -148,7 +148,7 @@ const coloredFieldBg = (_index: number, extra: Partial<AsciiProps> = {}): Partia
 const phosphorImageAscii = (src: string, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   imageSrc: src,
   sourceMode: "image",
-  colorMode: "source",
+  colorMode: "green-terminal",
   sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM],
   backgroundColor: PHOSPHOR_BG,
   backgroundMode: "solid-black",
