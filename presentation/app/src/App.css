@@ -834,8 +834,8 @@
 
 .modal-frame {
   position: relative;
-  width: min(88vw, 1400px);
-  max-height: min(86vh, 920px);
+  width: min(78vw, 1180px);
+  max-height: min(82vh, 880px);
   min-height: 380px;
   display: flex;
   flex-direction: column;
@@ -1142,11 +1142,11 @@
 }
 .modal-bullets li {
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 18px;
   color: var(--phosphor);
-  padding-left: 22px;
+  padding-left: 26px;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .modal-bullets li::before {
   content: "▸";
@@ -1584,6 +1584,14 @@
 }
 
 /* ── Image carousel ──────────────────────────────────────────────────── */
+/* Carousel needs a wider modal */
+.modal-body:has(.modal-carousel) {
+  padding: 12px;
+}
+.modal-frame:has(.modal-carousel) {
+  width: min(88vw, 1400px);
+  max-height: min(86vh, 920px);
+}
 .modal-carousel {
   margin: 0;
   flex: 1;
