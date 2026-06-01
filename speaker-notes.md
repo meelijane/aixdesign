@@ -308,14 +308,14 @@ Stop arguing about which AI tool is best.
 **Type:** body
 
 **Content:**
-- ADS, our design system, has been incredible leverage
+- ADS, our design system, has been incredible
 - We created an ADS MCP so agents could leverage our design system through various surfaces
 - Our team now includes Design Technologists, a new role for highly skilled technical designers
 
 **Notes:**
 
 - Our award-winning design system has been a huge part of our success with design adoption of AI
-- Being able to leverage our design system in replit, cursor, figma make - and not just the designs, but the CODE
+- Being able to use our design system in replit, cursor, figma make - and not just the designs, but the CODE
 - Our design technologists have unlocked so much amazing stuff for us, including developing prototyping repos and skills like "polish" and "tokenize"
 
 ---
@@ -327,7 +327,7 @@ Stop arguing about which AI tool is best.
 **Content:**
 - Unsurprisingly, Large Language Models are great at language-oriented design systems
 - Our well-documented content design standards have been transformed into an agent and an agentic service desk
-- Our documentation team leverages agents to audit, generate and adjust docs
+- Our documentation team now uses agents to audit, generate and adjust docs
 
 **Notes:**
 

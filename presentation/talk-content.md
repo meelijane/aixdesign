@@ -24,7 +24,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 
 ## Overview
 
-> Gargbage in, garbage out
+> Garbage in, garbage out
 > Quality is a team sport
 > Don't put a bird on it
 > Right tool for the job
@@ -32,7 +32,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 
 ---
 
-## Gargbage in, garbage out __section header__
+## Garbage in, garbage out __section header__
 **Image:** pixel art of a garbage can, arrow pointing to computer, arrow pointing to another garbage can with a sparkle emoji 
 
 ---
@@ -85,7 +85,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 
 > Eat your own dogfood, see how it tastes
 - We are culturally hard-wired to use our own tools - this is good and bad [modal]
-- Spending more time with customers is critically important & helps you idenitify the gaps
+- Spending more time with customers is critically important & helps you identify the gaps
 - You don't want customers doing your QA 
 
 [modal content -> screenshot of studio]
@@ -212,7 +212,7 @@ Look for opportunities to ship changes to apps, tools and systems, big or small 
 
 ## In summary
 
-> Gargbage in, garbage out
+> Garbage in, garbage out
 > Quality is a team sport
 > Don't put a bird on it
 > Right tool for the job

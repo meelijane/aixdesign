@@ -185,7 +185,7 @@ const coloredImageAscii = (
 const FIVE_SECTIONS = [
   "Garbage in, garbage out",
   "Quality is a team sport",
-  "Strategic alignment matters",
+  "Don't put a bird on it",
   "Right tool for the job",
   "Get AI to do your dishes",
 ];
@@ -426,7 +426,7 @@ export const SLIDES: Slide[] = [
     type: "section",
     layout: "full",
     label: { num: "03", text: FIVE_SECTIONS[2] },
-    content: { heading: "Strategic\nalignment matters" },
+    content: { heading: "Don't put a\nbird on it" },
     bg: { ascii: coloredFieldBg(10, { density: 0.55, animationStyle: "reveal", animationIntensity: 0.4 }) },
     notes: "One great way to increase quality is to make it a clear goal every craft is working towards. But as a 15,000 person company, teams will still diverge and duplicate work all the time",
   },
