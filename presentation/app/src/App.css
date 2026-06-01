@@ -181,8 +181,8 @@
 }
 
 /* ── Hero ─────────────────────────────────────────────────────────────── */
-.slide-hero { align-items: flex-end; justify-content: flex-start; padding-bottom: 12vh; }
-.hero-inner { max-width: 80vw; }
+.slide-hero { align-items: center; justify-content: center; }
+.hero-inner { max-width: 80vw; text-align: center; }
 .hero-title {
   font-family: var(--serif);
   font-weight: 400;
