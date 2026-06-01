@@ -511,7 +511,7 @@ export const SLIDES: Slide[] = [
           stages: [
             { heading: "Stage 1: Research_Synthesizer", sub: "→ \"State of the Research\"", body: "Reads all sources, extracts direct quotes, classifies evidence" },
             { heading: "Stage 2: Integrity_Auditor", sub: "→ Integrity Audit Report", body: "Independently verifies every quote, checks Jira statuses, catches hallucinations, validates search completeness" },
-            { heading: "⚠ Quality Gate", sub: "", body: "If Quote Accuracy < 80%, report flagged as unreliable" },
+            { heading: "⚠ Quality Gate", body: "If Quote Accuracy < 80%, report flagged as unreliable" },
             { heading: "Stage 3: Insight_Critic", sub: "→ Gap Analysis & Critique", body: "Finds contradictions, sample bias, assigns Research Maturity Scores per theme, identifies what's missing" },
           ],
         },

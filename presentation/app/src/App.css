@@ -1574,6 +1574,9 @@
   background: rgba(124, 255, 178, 0.14);
   border-color: var(--phosphor);
 }
+.modal-pipeline-stage--gate .modal-pipeline-body {
+  margin-top: 16px;
+}
 
 /* ── Image carousel ──────────────────────────────────────────────────── */
 .modal-carousel {
