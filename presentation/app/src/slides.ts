@@ -136,8 +136,8 @@ const fieldBg: Partial<AsciiProps> = {
 // Colored field — uses green phosphor tones on the dark CRT background.
 const coloredFieldBg = (_index: number, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   ...fieldBg,
-  sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM],
-  colorMode: "green-terminal",
+  colorMode: "monochrome",
+  monoColor: PHOSPHOR_GREEN,
   backgroundColor: PHOSPHOR_BG,
   backgroundMode: "solid-black",
   density: 0.5,
@@ -148,8 +148,8 @@ const coloredFieldBg = (_index: number, extra: Partial<AsciiProps> = {}): Partia
 const phosphorImageAscii = (src: string, extra: Partial<AsciiProps> = {}): Partial<AsciiProps> => ({
   imageSrc: src,
   sourceMode: "image",
-  colorMode: "green-terminal",
-  sourceColors: [PHOSPHOR_GREEN, PHOSPHOR_DIM],
+  colorMode: "monochrome",
+  monoColor: PHOSPHOR_GREEN,
   backgroundColor: PHOSPHOR_BG,
   backgroundMode: "solid-black",
   density: 0.9,
