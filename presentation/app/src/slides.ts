@@ -616,9 +616,9 @@ export const SLIDES: Slide[] = [
         {
           kind: "list",
           items: [
-            { term: "1 · Build prototypes", def: "Technical, AI-powered prototypes that live inside the AI Prototyping Sandbox or your team's repo. Build the muscle and learn the language of engineering." },
-            { term: "2 · Push what's possible", def: "Use AI to push how we work, communicate and make decisions faster. Push what's possible with your cross-craft team from inception to live." },
-            { term: "3 · Ship to production", def: "Ship changes to production using code. Look for opportunities — big or small — and contribute shared components and patterns." },
+            { term: "1 · Build prototypes", def: "Technical, AI-powered prototypes that live inside the AI Prototyping Sandbox or your team's repo.\n\nBuild the muscle and learn the language of engineering." },
+            { term: "2 · Push what's possible", def: "Use AI to push how we work, communicate and make decisions faster.\n\nPush what's possible with your cross-craft team from inception to live." },
+            { term: "3 · Ship to production", def: "Ship changes to production using code.\n\nLook for opportunities — big or small — and contribute shared components and patterns." },
           ],
         },
       ],
