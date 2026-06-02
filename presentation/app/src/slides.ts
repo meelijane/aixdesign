@@ -416,7 +416,7 @@ export const SLIDES: Slide[] = [
       ],
       footer: "Source: Atlassian Studio · internal builds",
     },
-    notes: "Dogfooding is in our DNA.",
+    notes: "Dogfooding is in our DNA. We are culturally hard-wired to use our own tools - this is good and bad. Spending more time with customers is critically important & helps you identify the gaps. You don't want customers doing your QA.",
   },
   // ═══════════════════════════════════════════════════════════════════════
   // §03 SECTION
@@ -527,7 +527,7 @@ export const SLIDES: Slide[] = [
       ],
       footer: "Source: hello.atlassian.net · Literature Review Agent",
     },
-    notes: "Hard problems are the unlock.",
+    notes: "Hard problems are the unlock. Atlassian has many great opportunities for AI - natural language automations, format transfer, large data sets. The most value we can provide to customers is making their hardest tasks easier. Our researcher built a three-agent system to do literature review.",
   },
   // ═══════════════════════════════════════════════════════════════════════
   // §04 SECTION
@@ -539,7 +539,7 @@ export const SLIDES: Slide[] = [
     label: { num: "04", text: FIVE_SECTIONS[3] },
     content: { heading: "Right tool\nfor the job" },
     bg: { ascii: coloredImageAscii("/tools-dark.png", 3, { vignette: 0.35, density: 0.9, animationStyle: "pulse", animationIntensity: 0.3 }) },
-    notes: "Match the tool to the job. AI is one tool among many.",
+    notes: "Match the tool to the job. AI is one tool among many. One great way to increase quality is to make it a clear goal every craft is working towards. But as a 15,000 person company, teams will still diverge and duplicate work all the time.",
   },
   // 4.1 — Prototype/polish
   {
@@ -574,7 +574,7 @@ export const SLIDES: Slide[] = [
       ],
       footer: "Source: Atlassian Design · AI tooling map",
     },
-    notes: "Stop arguing about which AI tool is best.",
+    notes: "Stop arguing about which AI tool is best. Different tools are suitable at different stages of the process. Generative tools for prototyping, automated tools for polishing.",
   },
   // 4.2 — Pen
   {
@@ -713,7 +713,7 @@ export const SLIDES: Slide[] = [
       ],
       footer: "Source: Atlassian Slack · #content-design-help",
     },
-    notes: "Content design + LLM is a natural fit.",
+    notes: "Content design + LLM is a natural fit. Unsurprisingly, Large Language Models are great at language-oriented design systems. Our well-documented content design standards have been transformed into an agent and an agentic service desk. Our documentation team now uses agents to audit, generate and adjust docs.",
   },
   // 5.3 — Personal OS
   {
@@ -788,7 +788,7 @@ export const SLIDES: Slide[] = [
       ],
     },
     bg: { ascii: coloredFieldBg(20, { density: 0.3, animationIntensity: 0.2 }) },
-    notes: "References for further reading.",
+    notes: "References for further reading. The URL is the best way to share the slides — it's all custom built. aixdesign.millyschmidt.me",
   },
   // ═══════════════════════════════════════════════════════════════════════
   // THANK YOU
