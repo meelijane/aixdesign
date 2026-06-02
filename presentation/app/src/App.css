@@ -34,11 +34,15 @@
 .presentation.palette-phosphor .slide {
   background: var(--phosphor-bg);
 }
-.presentation.palette-phosphor .text-panel,
-.presentation.palette-phosphor .slide.layout-split-right .text-panel,
-.presentation.palette-phosphor .slide.layout-split-left .text-panel {
-  background: var(--phosphor-bg) !important;
-  border-color: transparent !important;
+.presentation.palette-phosphor .text-panel {
+  background: var(--phosphor-bg);
+  border-color: transparent;
+}
+/* Split layouts: always transparent regardless of palette */
+.presentation .slide.layout-split-right .text-panel,
+.presentation .slide.layout-split-left .text-panel {
+  background: transparent !important;
+  border: none !important;
 }
 
 /* ── Presentation root ───────────────────────────────────────────────── */
@@ -76,13 +80,36 @@
 /* Layout: bg fills left half — right half stays solid black from .presentation */
 .bg-layout-split-left  { top: 0; right: 50%; bottom: 0; left: 0; }
 
-/* For split layouts, soft gradient instead of hard box */
+/* For split layouts: text panel is transparent, ASCII panel fades in with a mask */
 .slide.layout-split-right .text-panel,
 .slide.layout-split-left .text-panel {
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.5) 70%, transparent 100%);
+  background: transparent;
   border: none;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ASCII panel fades in from the text side using a pseudo-element overlay */
+.split-ascii-panel {
+  position: relative;
+}
+
+/* split-right: ASCII is on the right, fade from left edge inward */
+.slide.layout-split-right .split-ascii-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 40%);
+}
+
+/* split-left: ASCII is on the left, fade from right edge inward */
+.slide.layout-split-left .split-ascii-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 40%);
 }
 
 /* Layout: no bg */
@@ -164,7 +191,9 @@
 .slide.layout-full .text-panel,
 .slide.layout-deco .text-panel {
   max-width: 1200px;
-  background: rgba(0, 0, 0, 0.72);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.82) 30%, rgba(0,0,0,0.55) 60%, transparent 85%);
+  border: none;
+  padding: 6vh 5vw;
 }
 .slide.layout-bare .text-panel {
   background: transparent;
