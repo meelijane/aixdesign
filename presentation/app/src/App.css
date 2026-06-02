@@ -195,6 +195,11 @@
   border: none;
   padding: 10vh 10vw;
 }
+/* Section slides get a tighter, more centred gradient */
+.slide-section.layout-full .text-panel {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.90) 45%, rgba(0,0,0,0.60) 52%, rgba(0,0,0,-44.8) 83%, transparent 100%);
+}
+
 .slide.layout-bare .text-panel {
   background: transparent;
   border: none;
