@@ -76,11 +76,13 @@
 /* Layout: bg fills left half — right half stays solid black from .presentation */
 .bg-layout-split-left  { top: 0; right: 50%; bottom: 0; left: 0; }
 
-/* For split layouts, remove the text-panel border/padding box — text sits directly on black */
+/* For split layouts, soft gradient instead of hard box */
 .slide.layout-split-right .text-panel,
 .slide.layout-split-left .text-panel {
-  background: #000;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.5) 70%, transparent 100%);
   border: none;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 /* Layout: no bg */
