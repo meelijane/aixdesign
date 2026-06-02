@@ -235,7 +235,7 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "Organisational\ncontext is key",
       bullets: [
-        "The Teamwork Graph elevates your organisation's shared context",
+        "The teamwork graph elevates your organisation's shared context",
         "You can spend less time searching and more time making",
         "AI can pull contextually relevant info for you in various surfaces",
       ],
@@ -267,9 +267,9 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "Personal context\nis also critical",
       bullets: [
-        "Atlassian is a read/write culture — so we have a lot of Confluence docs",
+        "Atlassian is a read/write culture - so we have a lot of Confluence docs",
         "But the real star here is Loom, which allows you to record meetings",
-        "Your goals, your priorities and your focus — as well as your thoughts in the moment — can now be fed into the next stage of your designs",
+        "Your goals, your priorities and your focus - as well as your thoughts in the moment - can now be fed into the next stage of your designs.",
       ],
       modalBullet: 1,
     },
@@ -300,7 +300,7 @@ export const SLIDES: Slide[] = [
       heading: "Specificity\nand iteration",
       bullets: [
         "None of this matters if you prompt poorly",
-        "Voice is critical for me — I can type fast but I can yap faster",
+        "Voice is critical for me - I can type fast but I can yap faster",
         "Read the output and critique it. Do the revs.",
       ],
       modalBullet: 1,
@@ -401,7 +401,7 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "Eat your own dogfood,\nsee how it tastes",
       bullets: [
-        "We are culturally hard-wired to use our own tools — this is good and bad",
+        "We are culturally hard-wired to use our own tools - this is good and bad",
         "Spending more time with customers is critically important & helps you identify the gaps",
         "You don't want customers doing your QA",
       ],
@@ -441,7 +441,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "Key UIs started to look the same",
         "If you jump to a prototype too fast, you might be converging prematurely",
-        "The models reinforce this by outputting 'averaged' ideas",
+        "The models reinforce this by outputting "averaged" ideas",
       ],
       modalBullet: 0,
     },
@@ -502,7 +502,7 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "Don't make easy things easier;\nmake hard things easier",
       bullets: [
-        "Atlassian has many great opportunities for AI — natural language automations, format transfer, large data sets",
+        "The problem space Atlassian plays in has many great opportunities for AI - natural language automations, format transfer, large data sets",
         "The most value we can provide to customers is making their hardest tasks easier",
         "Our researcher built a three-agent system to do literature review",
       ],
@@ -587,7 +587,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "Engagement is a useful metric, but mandating AI for everything isn't helpful",
         "Different brains, different problems and different teams should choose the tool that suits the problem space best",
-        "I made this deck in Rovo Dev, but had to use my notebook to design it",
+        "I made this deck in Rovodev, but had to use my notebook to design it",
       ],
       modalBullet: 2,
     },
@@ -612,8 +612,8 @@ export const SLIDES: Slide[] = [
       heading: "Knowing when to\nleverage AI is a skill",
       bullets: [
         "Identifying opportunities to automate requires understanding the capabilities deeply",
-        "It also requires knowing our own capabilities — what tools are connected, what actions are available",
-        "Finally, it requires democratisation of AI and automation tooling — available to everyone",
+        "It also requires knowing our own capabilities - what tools are connected, what actions are available",
+        "Finally, it requires democratisation of AI and automation tooling - available to everyone.",
       ],
       modalBullet: 0,
     },
@@ -700,7 +700,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "Unsurprisingly, Large Language Models are great at language-oriented design systems",
         "Our well-documented content design standards have been transformed into an agent and an agentic service desk",
-        "Our documentation team leverages agents to audit, generate and adjust docs",
+        "Our documentation team leverage agents to audit, generate and adjust docs",
       ],
       modalBullet: 2,
     },
@@ -724,8 +724,8 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "A personal\noperating system",
       bullets: [
-        "I created my own 'second brain' — running entirely through CLI on md files",
-        "Managing a team of ten across at least 30 projects + my side quests, it's been invaluable",
+        "I created my own "second brain" - running entirely through CLI on md files",
+        "Managing a team of ten across at least 30 projects at a time + my side quests, it's been invaluable",
         "This OpenClaw philosophy is driving our explorations into Rovo as a second brain",
       ],
       modalBullet: 0,
