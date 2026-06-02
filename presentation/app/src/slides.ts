@@ -441,7 +441,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "Key UIs started to look the same",
         "If you jump to a prototype too fast, you might be converging prematurely",
-        "The models reinforce this by outputting "averaged" ideas",
+        'The models reinforce this by outputting "averaged" ideas',
       ],
       modalBullet: 0,
     },
@@ -724,7 +724,7 @@ export const SLIDES: Slide[] = [
     content: {
       heading: "A personal\noperating system",
       bullets: [
-        "I created my own "second brain" - running entirely through CLI on md files",
+        'I created my own "second brain" - running entirely through CLI on md files',
         "Managing a team of ten across at least 30 projects at a time + my side quests, it's been invaluable",
         "This OpenClaw philosophy is driving our explorations into Rovo as a second brain",
       ],
