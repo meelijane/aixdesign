@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Ascii from "./shaders/ascii";
 import Pixel from "./shaders/pixel";
-import { SLIDES, type Modal, type ModalBlock, type TerminalLine, type ChatMessage } from "./slides";
+import { SLIDES, type Modal, type ModalBlock, type TerminalLine, type ChatMessage } from "./content/slides";
+// Engine imports — theme system wired up in a future step
+// import { darkTheme } from "./engine";
+// import type { Theme } from "./engine";
 import "./App.css";
 
 const NOTES_KEY = "presentation-state";
