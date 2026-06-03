@@ -1,17 +1,20 @@
 /* ── Tokens ───────────────────────────────────────────────────────────── */
+/* Colour tokens are injected at runtime from the Theme object via inline style.
+   The values below are fallbacks only — they match the default darkTheme. */
 :root {
-  --bg: #000;
-  --fg: #f5f5f0;
-  --fg-dim: rgba(245, 245, 240, 0.55);
-  --fg-faint: rgba(245, 245, 240, 0.3);
-  --accent: #F5F5F0;
-  --accent-2: #F5F5F0;
-  --accent-3: #F5F5F0;
+  --bg: #0a0a0f;
+  --fg: #e8e8f0;
+  --fg-dim: rgba(232, 232, 240, 0.55);
+  --fg-faint: rgba(232, 232, 240, 0.3);
+  --accent: #7c6af7;
+  --accent-2: #a78bfa;
+  --accent-3: #a78bfa;
+  --dim: #4a4a6a;
   --mono: "Space Mono", "SF Mono", "Menlo", monospace;
   --serif: "Averia Serif Libre", "Georgia", serif;
   --sans: "Inter", -apple-system, system-ui, sans-serif;
 
-  /* Phosphor palette — harmonises with the pixel-art modal shader */
+  /* Phosphor palette — overridden by theme at runtime */
   --phosphor:        #7CFFB2;
   --phosphor-dim:    rgba(124, 255, 178, 0.62);
   --phosphor-faint:  rgba(124, 255, 178, 0.32);

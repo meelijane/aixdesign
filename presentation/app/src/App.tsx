@@ -2,9 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Ascii from "./shaders/ascii";
 import Pixel from "./shaders/pixel";
 import { SLIDES, type Modal, type ModalBlock, type TerminalLine, type ChatMessage } from "./content/slides";
-// Engine imports — theme system wired up in a future step
-// import { darkTheme } from "./engine";
-// import type { Theme } from "./engine";
+import { darkTheme, type Theme } from "./engine";
 import "./App.css";
 
 const NOTES_KEY = "presentation-state";
@@ -83,9 +81,27 @@ function useKeyboard(handlers: Record<string, () => void>) {
   }, [handlers]);
 }
 
-export default function App() {
+export default function App({ theme = darkTheme }: { theme?: Theme }) {
   const isPresenterIframe = new URLSearchParams(window.location.search).has("presenter");
   const { ready, progress } = usePreloader();
+
+  // Build CSS variables from theme — injected as inline style on the root element
+  const themeVars = {
+    "--bg": theme.bg,
+    "--fg": theme.fg,
+    "--fg-dim": `${theme.fg}8C`,
+    "--fg-faint": `${theme.fg}4D`,
+    "--accent": theme.accent1,
+    "--accent-2": theme.accent2,
+    "--accent-3": theme.accent2,
+    "--phosphor": theme.phosphor,
+    "--phosphor-dim": `${theme.phosphor}9E`,
+    "--phosphor-faint": `${theme.phosphor}52`,
+    "--phosphor-bg": theme.phosphorBg,
+    "--phosphor-bg-2": theme.phosphorBg,
+    "--phosphor-border": `${theme.phosphor}73`,
+    "--dim": theme.dim,
+  } as React.CSSProperties;
 
   // Read initial slide from URL hash (e.g. #5 or #s1-iteration)
   const [index, setIndex] = useState(() => {
@@ -370,7 +386,7 @@ export default function App() {
         </div>
       </div>
     )}
-    <div className={`presentation palette-${palette}`} style={ready ? undefined : { visibility: "hidden" }}>
+    <div className={`presentation palette-${palette}`} style={{ ...themeVars, ...(ready ? {} : { visibility: "hidden" }) }}>
       {/* Background ASCII shader — for non-split layouts, sits behind everything */}
       {(slide.layout !== "split-right" && slide.layout !== "split-left") && (
         <div className="bg-layer bg-layout-full">
