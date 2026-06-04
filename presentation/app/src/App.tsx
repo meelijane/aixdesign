@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Ascii from "./shaders/ascii";
 import Pixel from "./shaders/pixel";
+import Pattern from "./shaders/pattern";
 import { SLIDES, type Modal, type ModalBlock, type TerminalLine, type ChatMessage } from "./content/slides";
 import { darkTheme, THEMES, type Theme } from "./engine";
 import "./App.css";
@@ -439,9 +440,15 @@ export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme
               style={{ backgroundImage: `url(${slide.bg.image})` }}
             />
           )}
-          {/* Noise texture bg — for noise bgStyle with no image */}
+          {/* Generative pattern bg — for noise bgStyle with no image */}
           {theme.bgStyle === "noise" && !slide.bg?.image && (
-            <div className="bg-noise" />
+            <Pattern
+              color={theme.accent1}
+              bg={theme.bg}
+              opacity={0.3}
+              style="dots"
+              speed={0.4}
+            />
           )}
         </div>
       )}
