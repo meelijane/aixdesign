@@ -464,7 +464,7 @@ export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme
         className={`slide slide-${slide.type} layout-${slide.layout ?? "full"}`}
         key={slide.id}
       >
-        <div className="text-panel">
+        <div className={`text-panel ${slide.bg?.ascii || slide.bg?.image ? "has-bg" : "no-bg"}`}>
           <SlideContent slide={slide} />
         </div>
         {/* For split layouts, render the ASCII art as a sibling cell */}
