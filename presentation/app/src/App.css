@@ -2007,6 +2007,12 @@
   }
 
   /* Flow diagram — stack stages vertically */
+  .modal-flow {
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
   .modal-flow-row {
     flex-direction: column;
     gap: 8px;
