@@ -1990,7 +1990,10 @@
     max-height: 240px;
     object-fit: cover;
   }
-  .modal-quote-content { padding: 0; }
+  .modal-quote-content {
+    padding: 0 0 0 0;
+    border-left: none !important;
+  }
   .modal-quote blockquote {
     border-left: none;
     padding-left: 0;
