@@ -1955,16 +1955,15 @@
     right: 4vw;
     font-size: 9px;
   }
-  .hint {
-    bottom: 2vh;
-    width: 92vw;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-  }
+  /* Hide keyboard shortcuts hint on mobile — there's no keyboard */
+  .hint { display: none; }
+  /* Modal hint sits where the hint bar was — clearly visible */
   .modal-hint {
-    bottom: 4vh;
-    left: 4vw;
-    font-size: 9px;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    padding: 8px 14px;
   }
 
   /* ── Modal — full-width, tighter ──────────────────────────────── */
@@ -1979,6 +1978,59 @@
   .modal-list-row { grid-template-columns: 1fr; gap: 4px; }
   .modal-grid { grid-template-columns: 1fr !important; }
   .modal-image-grid-cell { grid-template-columns: 1fr !important; }
+
+  /* Quote with image (Rachel Shepard) — stack: image on top, quote below */
+  .modal-quote--with-image {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+  .modal-quote-image {
+    width: 100%;
+    max-height: 240px;
+    object-fit: cover;
+  }
+  .modal-quote-content { padding: 0; }
+
+  /* Flow diagram — stack stages vertically */
+  .modal-flow-row {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .modal-flow-stage {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    padding: 10px 14px;
+  }
+  .modal-flow-text {
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 1;
+  }
+  .modal-flow-arrow {
+    transform: rotate(90deg);
+    width: auto;
+    align-self: center;
+  }
+
+  /* Pipeline — stack stages vertically */
+  .modal-pipeline-stages {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto;
+    gap: 12px;
+  }
+  .modal-pipeline-harrow {
+    transform: rotate(90deg);
+    margin: 4px auto;
+  }
+  .modal-pipeline-bookend { padding: 12px; font-size: 14px; }
+
+  /* Chat — keep vertical but wider bubbles */
+  .modal-chat-msg { padding: 8px 10px; }
+  .modal-chat-text { font-size: 14px; }
 
   /* ── Settings panel — full screen on mobile ───────────────────── */
   .settings-panel {
