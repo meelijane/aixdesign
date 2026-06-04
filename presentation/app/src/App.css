@@ -2025,15 +2025,30 @@
 
   /* Pipeline — stack stages vertically */
   .modal-pipeline-stages {
-    grid-template-columns: 1fr !important;
-    grid-auto-rows: auto;
+    flex-direction: column;
+    align-items: stretch;
     gap: 12px;
+  }
+  .modal-pipeline-stage {
+    text-align: left;
+    padding: 12px 14px;
   }
   .modal-pipeline-harrow {
     transform: rotate(90deg);
-    margin: 4px auto;
+    margin: 0 auto;
+    padding: 4px 0;
   }
-  .modal-pipeline-bookend { padding: 12px; font-size: 14px; }
+  .modal-pipeline-bookend {
+    padding: 12px;
+    font-size: 14px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .modal-pipeline { gap: 6px; }
+  .modal-pipeline-stage strong { font-size: 13px; }
+  .modal-pipeline-sub { font-size: 13px; }
+  .modal-pipeline-body { font-size: 13px; }
 
   /* Chat — keep vertical but wider bubbles */
   .modal-chat-msg { padding: 8px 10px; }
