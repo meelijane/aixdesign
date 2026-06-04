@@ -1843,3 +1843,147 @@
   .modal-list-row { grid-template-columns: 1fr; gap: 2px; }
   .modal-grid { grid-template-columns: 1fr !important; }
 }
+
+/* ── Settings panel ──────────────────────────────────────────────────── */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overviewFade 0.15s ease-out;
+}
+
+.settings-panel {
+  background: var(--bg);
+  border: 1px solid var(--dim);
+  border-radius: 4px;
+  padding: 2rem;
+  min-width: 480px;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.settings-close {
+  background: none;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0 4px;
+  transition: color 0.15s;
+}
+.settings-close:hover { color: var(--fg); }
+
+.settings-themes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.settings-theme-card {
+  position: relative;
+  background: none;
+  border: 1px solid var(--dim);
+  border-radius: 4px;
+  padding: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.15s, transform 0.1s;
+}
+.settings-theme-card:hover {
+  border-color: var(--fg);
+  transform: translateY(-2px);
+}
+.settings-theme-card.active {
+  border-color: var(--accent);
+}
+
+/* Mini slide preview */
+.settings-theme-preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 2px;
+  background: var(--card-bg);
+  position: relative;
+  overflow: hidden;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.stp-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--card-bg);
+}
+.stp-heading {
+  position: relative;
+  height: 8px;
+  width: 65%;
+  background: var(--card-fg);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+.stp-line {
+  position: relative;
+  height: 4px;
+  width: 80%;
+  background: var(--card-accent2);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+.stp-line.short { width: 55%; }
+.stp-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.settings-theme-name {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--fg);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.settings-theme-active {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+
+.settings-hint {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  text-align: center;
+  text-transform: uppercase;
+}

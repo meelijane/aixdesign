@@ -2,8 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Ascii from "./shaders/ascii";
 import Pixel from "./shaders/pixel";
 import { SLIDES, type Modal, type ModalBlock, type TerminalLine, type ChatMessage } from "./content/slides";
-import { darkTheme, type Theme } from "./engine";
+import { darkTheme, THEMES, type Theme } from "./engine";
 import "./App.css";
+
+const THEME_KEY = "presentation-theme";
 
 const NOTES_KEY = "presentation-state";
 
@@ -81,9 +83,24 @@ function useKeyboard(handlers: Record<string, () => void>) {
   }, [handlers]);
 }
 
-export default function App({ theme = darkTheme }: { theme?: Theme }) {
+export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme }) {
   const isPresenterIframe = new URLSearchParams(window.location.search).has("presenter");
   const { ready, progress } = usePreloader();
+
+  // Theme state — persisted to localStorage
+  const [theme, setTheme] = useState<Theme>(() => {
+    const saved = localStorage.getItem(THEME_KEY);
+    return (saved && THEMES[saved]) ? THEMES[saved] : defaultTheme;
+  });
+
+  const [showSettings, setShowSettings] = useState(false);
+  const toggleSettings = useCallback(() => setShowSettings((v) => !v), []);
+
+  const selectTheme = useCallback((t: Theme) => {
+    setTheme(t);
+    localStorage.setItem(THEME_KEY, t.name);
+    setShowSettings(false);
+  }, []);
 
   // Build CSS variables from theme — injected as inline style on the root element
   const themeVars = {
@@ -272,6 +289,8 @@ export default function App({ theme = darkTheme }: { theme?: Theme }) {
       P: openNotesWindow,
       o: toggleOverview,
       O: toggleOverview,
+      t: toggleSettings,
+      T: toggleSettings,
       m: toggleModal,
       M: toggleModal,
       Escape: () => {
@@ -279,7 +298,7 @@ export default function App({ theme = darkTheme }: { theme?: Theme }) {
         else if (showOverview) setShowOverview(false);
       },
     }),
-    [advance, retreat, goTo, total, toggleFullscreen, toggleNotes, openNotesWindow, toggleOverview, toggleModal, modalOpen, showOverview]
+    [advance, retreat, goTo, total, toggleFullscreen, toggleNotes, openNotesWindow, toggleOverview, toggleModal, modalOpen, showOverview, toggleSettings]
   );
   useKeyboard(isPresenterIframe ? {} : handlers);
 
@@ -516,6 +535,44 @@ export default function App({ theme = darkTheme }: { theme?: Theme }) {
                 </button>
               );
             })}
+          </div>
+        </div>
+      )}
+
+      {/* ── Settings panel ────────────────────────────────────────────── */}
+      {showSettings && (
+        <div className="settings-overlay" onClick={() => setShowSettings(false)}>
+          <div className="settings-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="settings-head">
+              <span>// THEME</span>
+              <button className="settings-close" onClick={() => setShowSettings(false)}>✕</button>
+            </div>
+            <div className="settings-themes">
+              {Object.values(THEMES).map((t) => (
+                <button
+                  key={t.name}
+                  className={`settings-theme-card ${theme.name === t.name ? "active" : ""}`}
+                  onClick={() => selectTheme(t)}
+                  style={{
+                    "--card-bg": t.bg,
+                    "--card-fg": t.fg,
+                    "--card-accent": t.accent1,
+                    "--card-accent2": t.accent2,
+                  } as React.CSSProperties}
+                >
+                  <div className="settings-theme-preview">
+                    <div className="stp-bg" />
+                    <div className="stp-heading" />
+                    <div className="stp-line" />
+                    <div className="stp-line short" />
+                    <div className="stp-dot" />
+                  </div>
+                  <div className="settings-theme-name">{t.name}</div>
+                  {theme.name === t.name && <div className="settings-theme-active">✓</div>}
+                </button>
+              ))}
+            </div>
+            <div className="settings-hint">Press T to open · Esc to close</div>
           </div>
         </div>
       )}
