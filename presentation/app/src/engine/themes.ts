@@ -6,49 +6,62 @@
 import type { Theme } from "./types";
 
 /**
- * Dark theme — deep navy/black background with purple/violet accents.
- * This is the default theme, matching the original AIxDesign talk aesthetic.
+ * Dark theme — serif typography, noise texture background, no ASCII art.
+ * Clean and editorial. Images rendered directly with gradient overlay.
  */
 export const darkTheme: Theme = {
   name: "dark",
-  bg: "#0a0a0f",
-  fg: "#e8e8f0",
-  accent1: "#7c6af7",
-  accent2: "#a78bfa",
-  dim: "#4a4a6a",
+  bg: "#0f0e0c",
+  fg: "#e8e4dc",
+  accent1: "#c9a96e",
+  accent2: "#a07840",
+  dim: "#4a4540",
   phosphor: "#7CFFB2",
   phosphorBg: "#04120A",
   defaultPalette: "color",
+  bgStyle: "noise",
+  fontStack: "serif",
+  asciiImages: false,
+  modalStyle: "dark",
 };
 
 /**
- * Light theme — clean white background with blue accents.
+ * Light theme — same as dark but inverted. Serif font, noise texture, clean modals.
  */
 export const lightTheme: Theme = {
   name: "light",
-  bg: "#f8f8fc",
-  fg: "#1a1a2e",
-  accent1: "#4f46e5",
-  accent2: "#7c3aed",
-  dim: "#9090a8",
+  bg: "#f5f2eb",
+  fg: "#1a1714",
+  accent1: "#8b5e1a",
+  accent2: "#c9893a",
+  dim: "#a09880",
   phosphor: "#7CFFB2",
   phosphorBg: "#04120A",
   defaultPalette: "color",
+  bgStyle: "noise",
+  fontStack: "serif",
+  asciiImages: false,
+  modalStyle: "light",
 };
 
 /**
- * Phosphor theme — full green-on-black terminal aesthetic throughout.
+ * Phosphor theme — ASCII art, terminal green accents, monospace font.
+ * The full-featured original aesthetic.
  */
 export const phosphorTheme: Theme = {
   name: "phosphor",
   bg: "#04120A",
-  fg: "#7CFFB2",
+  fg: "#e8e8f0",
   accent1: "#7CFFB2",
   accent2: "#3A9460",
-  dim: "#1e4a30",
+  dim: "#2a5a3a",
   phosphor: "#7CFFB2",
   phosphorBg: "#04120A",
-  defaultPalette: "phosphor",
+  defaultPalette: "color",
+  bgStyle: "ascii",
+  fontStack: "mono",
+  asciiImages: true,
+  modalStyle: "phosphor",
 };
 
 /** All built-in themes, keyed by name for easy lookup */

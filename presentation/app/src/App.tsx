@@ -118,7 +118,19 @@ export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme
     "--phosphor-bg-2": theme.phosphorBg,
     "--phosphor-border": `${theme.phosphor}73`,
     "--dim": theme.dim,
+    "--font-heading": theme.fontStack === "serif"
+      ? "var(--serif)"
+      : theme.fontStack === "sans"
+      ? "var(--sans)"
+      : "var(--mono)",
+    "--font-body": theme.fontStack === "serif"
+      ? "var(--serif)"
+      : theme.fontStack === "sans"
+      ? "var(--sans)"
+      : "var(--mono)",
   } as React.CSSProperties;
+
+  const showAscii = theme.asciiImages;
 
   // Read initial slide from URL hash (e.g. #5 or #s1-iteration)
   const [index, setIndex] = useState(() => {
@@ -405,22 +417,31 @@ export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme
         </div>
       </div>
     )}
-    <div className={`presentation palette-${palette}`} style={{ ...themeVars, ...(ready ? {} : { visibility: "hidden" }) }}>
-      {/* Background ASCII shader — for non-split layouts, sits behind everything */}
+    <div
+      className={`presentation palette-${palette} theme-${theme.name} bg-style-${theme.bgStyle} modal-style-${theme.modalStyle}`}
+      style={{ ...themeVars, ...(ready ? {} : { visibility: "hidden" }) }}
+    >
+      {/* Background layer — for non-split layouts */}
       {(slide.layout !== "split-right" && slide.layout !== "split-left") && (
         <div className="bg-layer bg-layout-full">
-          {slide.bg?.ascii && (
+          {/* ASCII shader bg — only in ascii-images mode */}
+          {showAscii && slide.bg?.ascii && (
             <Ascii
               key={slide.id}
               style={{ width: "100%", height: "100%" }}
               {...slide.bg.ascii}
             />
           )}
-          {slide.bg?.image && !slide.bg.ascii && (
+          {/* Direct image bg — in non-ascii mode, or when no ascii config */}
+          {slide.bg?.image && (!showAscii || !slide.bg.ascii) && (
             <div
               className="bg-image"
               style={{ backgroundImage: `url(${slide.bg.image})` }}
             />
+          )}
+          {/* Noise texture bg — for noise bgStyle with no image */}
+          {theme.bgStyle === "noise" && !slide.bg?.image && (
+            <div className="bg-noise" />
           )}
         </div>
       )}
@@ -439,14 +460,22 @@ export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme
         <div className="text-panel">
           <SlideContent slide={slide} />
         </div>
-        {/* For split layouts, render the ASCII art as a sibling cell instead of an overlapping layer */}
-        {(slide.layout === "split-right" || slide.layout === "split-left") && slide.bg?.ascii && (
+        {/* For split layouts, render the ASCII art as a sibling cell */}
+        {(slide.layout === "split-right" || slide.layout === "split-left") && (
           <div className="split-ascii-panel">
-            <Ascii
-              key={slide.id + "-ascii"}
-              style={{ width: "100%", height: "100%" }}
-              {...slide.bg.ascii}
-            />
+            {showAscii && slide.bg?.ascii && (
+              <Ascii
+                key={slide.id + "-ascii"}
+                style={{ width: "100%", height: "100%" }}
+                {...slide.bg.ascii}
+              />
+            )}
+            {slide.bg?.image && (!showAscii || !slide.bg.ascii) && (
+              <div
+                className="bg-image"
+                style={{ backgroundImage: `url(${slide.bg.image})` }}
+              />
+            )}
           </div>
         )}
       </main>

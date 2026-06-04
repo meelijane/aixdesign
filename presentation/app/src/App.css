@@ -1844,6 +1844,107 @@
   .modal-grid { grid-template-columns: 1fr !important; }
 }
 
+/* ── Theme variants ──────────────────────────────────────────────────── */
+
+/* Noise texture background for dark/light themes */
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Serif font overrides for dark/light themes */
+.theme-dark, .theme-light {
+  --font-heading: var(--serif);
+  --font-body: var(--serif);
+}
+
+.theme-dark .hero-title,
+.theme-dark .section-heading,
+.theme-dark .body-heading,
+.theme-dark .heading,
+.theme-light .hero-title,
+.theme-light .section-heading,
+.theme-light .body-heading,
+.theme-light .heading {
+  font-family: var(--serif);
+  letter-spacing: -0.01em;
+}
+
+.theme-dark .hero-subtitle,
+.theme-dark .section-secondary,
+.theme-dark .body-secondary,
+.theme-dark .body-text,
+.theme-light .hero-subtitle,
+.theme-light .section-secondary,
+.theme-light .body-secondary,
+.theme-light .body-text {
+  font-family: var(--serif);
+}
+
+/* Clean text panel for dark/light — no blurred radial gradient needed */
+.theme-dark.bg-style-noise .slide.layout-full .text-panel,
+.theme-dark.bg-style-noise .slide.layout-deco .text-panel,
+.theme-light.bg-style-noise .slide.layout-full .text-panel,
+.theme-light.bg-style-noise .slide.layout-deco .text-panel,
+.theme-dark.bg-style-noise .slide-section.layout-full .text-panel,
+.theme-light.bg-style-noise .slide-section.layout-full .text-panel {
+  background: transparent;
+  padding: 8vh 8vw;
+}
+
+/* Image treatment for dark/light themes — elegant gradient overlay */
+.theme-dark .bg-image,
+.theme-light .bg-image {
+  filter: none;
+}
+
+.theme-dark .bg-style-noise .split-ascii-panel .bg-image,
+.theme-light .bg-style-noise .split-ascii-panel .bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Light modal */
+.modal-style-light .modal-frame {
+  background: #faf9f6;
+  border-color: #d0c8b8;
+  color: #1a1714;
+}
+.modal-style-light .modal-titlebar {
+  background: #ede9e0;
+  border-bottom-color: #d0c8b8;
+}
+.modal-style-light .modal-title { color: #1a1714; }
+.modal-style-light .modal-tag { color: #8b5e1a; border-color: #c9893a; }
+.modal-style-light .modal-close { color: #8b5e1a; }
+.modal-style-light .modal-close:hover { color: #1a1714; }
+.modal-style-light .modal-body { color: #1a1714; }
+.modal-style-light .modal-text { color: #1a1714; }
+.modal-style-light .modal-footer { color: #6a5a40; border-top-color: #d0c8b8; }
+
+/* Dark modal (distinct from phosphor) */
+.modal-style-dark .modal-frame {
+  background: #1a1814;
+  border-color: #3a3530;
+  color: #e8e4dc;
+}
+.modal-style-dark .modal-titlebar {
+  background: #231f1a;
+  border-bottom-color: #3a3530;
+}
+.modal-style-dark .modal-title { color: #e8e4dc; }
+.modal-style-dark .modal-tag { color: #c9a96e; border-color: #c9a96e; }
+.modal-style-dark .modal-close { color: #c9a96e; }
+.modal-style-dark .modal-close:hover { color: #e8e4dc; }
+.modal-style-dark .modal-body { color: #e8e4dc; }
+.modal-style-dark .modal-text { color: #e8e4dc; }
+.modal-style-dark .modal-footer { color: #8a7a60; border-top-color: #3a3530; }
+
 /* ── Settings panel ──────────────────────────────────────────────────── */
 .settings-overlay {
   position: fixed;

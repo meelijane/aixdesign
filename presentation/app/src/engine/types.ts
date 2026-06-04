@@ -120,4 +120,35 @@ export type Theme = {
   phosphorBg: string;
   /** Default slide palette */
   defaultPalette: "color" | "phosphor";
+
+  /**
+   * Background style for slides without an explicit bg image.
+   * - "ascii"  — render ASCII art shader (phosphor theme default)
+   * - "noise"  — subtle CSS grain/noise texture (dark/light theme default)
+   * - "solid"  — flat background colour only
+   */
+  bgStyle: "ascii" | "noise" | "solid";
+
+  /**
+   * Primary font stack for headings and body text.
+   * - "mono"  — Space Mono / monospace (phosphor theme)
+   * - "serif" — Averia Serif Libre / serif (dark/light theme)
+   * - "sans"  — Inter / system sans-serif
+   */
+  fontStack: "mono" | "serif" | "sans";
+
+  /**
+   * Whether slides should show ASCII art in the background when a bg image is provided.
+   * true = render image through ASCII shader (phosphor)
+   * false = render image directly with gradient/blur overlay (dark/light)
+   */
+  asciiImages: boolean;
+
+  /**
+   * Modal colour scheme.
+   * - "phosphor" — dark green terminal modal (default for phosphor theme)
+   * - "dark"     — dark neutral modal
+   * - "light"    — light/white modal
+   */
+  modalStyle: "phosphor" | "dark" | "light";
 };
