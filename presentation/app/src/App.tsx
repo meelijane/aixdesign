@@ -112,12 +112,14 @@ export default function App({ theme: defaultTheme = darkTheme }: { theme?: Theme
     "--accent": theme.accent1,
     "--accent-2": theme.accent2,
     "--accent-3": theme.accent2,
-    "--phosphor": theme.phosphor,
-    "--phosphor-dim": `${theme.phosphor}9E`,
-    "--phosphor-faint": `${theme.phosphor}52`,
-    "--phosphor-bg": theme.phosphorBg,
-    "--phosphor-bg-2": theme.phosphorBg,
-    "--phosphor-border": `${theme.phosphor}73`,
+    // For non-phosphor themes, remap --phosphor to the accent colour
+    // so any CSS using var(--phosphor) gets the right theme colour
+    "--phosphor": theme.bgStyle === "ascii" ? theme.phosphor : theme.accent1,
+    "--phosphor-dim": theme.bgStyle === "ascii" ? `${theme.phosphor}9E` : `${theme.accent1}9E`,
+    "--phosphor-faint": theme.bgStyle === "ascii" ? `${theme.phosphor}52` : `${theme.accent1}52`,
+    "--phosphor-bg": theme.bgStyle === "ascii" ? theme.phosphorBg : theme.bg,
+    "--phosphor-bg-2": theme.bgStyle === "ascii" ? theme.phosphorBg : theme.bg,
+    "--phosphor-border": theme.bgStyle === "ascii" ? `${theme.phosphor}73` : `${theme.accent1}73`,
     "--dim": theme.dim,
     "--font-heading": theme.fontStack === "serif"
       ? "var(--serif)"

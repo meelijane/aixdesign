@@ -1865,6 +1865,23 @@
   background-size: 256px 256px;
 }
 
+/* For dark/light themes, override ALL mono font usage to serif for content elements.
+   UI chrome (labels, progress, hints) keep mono for legibility. */
+.theme-dark .body-heading,
+.theme-light .body-heading {
+  font-family: var(--serif);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: clamp(11px, 1vw, 16px);
+}
+
+.theme-dark .hero-subtitle,
+.theme-light .hero-subtitle {
+  font-family: var(--serif);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
 /* Serif font overrides for dark/light themes — override all mono heading elements */
 .theme-dark .hero-title,
 .theme-dark .hero-subtitle,
