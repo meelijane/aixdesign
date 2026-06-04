@@ -1975,7 +1975,14 @@
   .modal-title { font-size: 13px; }
   .modal-body { padding: 14px; }
   .modal-text p { font-size: 15px; line-height: 1.5; }
-  .modal-list-row { grid-template-columns: 1fr; gap: 4px; }
+  .modal-list-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  .modal-list-row dt { font-size: 12px; margin-bottom: 4px; }
+  .modal-list-row dd { font-size: 14px; }
   .modal-grid { grid-template-columns: 1fr !important; }
   .modal-image-grid-cell { grid-template-columns: 1fr !important; }
 
