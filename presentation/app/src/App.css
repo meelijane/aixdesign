@@ -1991,6 +1991,10 @@
     object-fit: cover;
   }
   .modal-quote-content { padding: 0; }
+  .modal-quote blockquote {
+    border-left: none;
+    padding-left: 0;
+  }
 
   /* Flow diagram — stack stages vertically */
   .modal-flow-row {
