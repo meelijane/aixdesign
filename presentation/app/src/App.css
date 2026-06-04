@@ -1834,9 +1834,173 @@
   z-index: 2;
 }
 
-/* Responsive — narrower viewports */
-@media (max-width: 900px) {
-  .modal-frame { width: 92vw; }
-  .modal-list-row { grid-template-columns: 1fr; gap: 2px; }
+/* ══════════════════════════════════════════════════════════════════════
+   MOBILE — single breakpoint at 768px
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Slide containers ───────────────────────────────────────────── */
+  .slide {
+    padding: 4vh 5vw;
+  }
+  .slide.layout-full,
+  .slide.layout-deco {
+    padding: 4vh 5vw;
+  }
+
+  /* Section slides — left-aligned, less padding */
+  .slide-section {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .section-inner { max-width: 100%; }
+
+  /* Hero — tighter spacing */
+  .hero-inner { max-width: 92vw; padding: 0 4vw; }
+  .hero-title {
+    font-size: clamp(40px, 12vw, 80px);
+    line-height: 1.0;
+  }
+  .hero-subtitle {
+    margin-top: 1.4em;
+    font-size: clamp(13px, 3.4vw, 18px);
+  }
+
+  /* Text panel — kill the desktop padding */
+  .text-panel { padding: 3vh 4vw; }
+  .slide.layout-full .text-panel,
+  .slide.layout-full .text-panel.has-bg,
+  .slide.layout-full .text-panel.no-bg,
+  .slide.layout-deco .text-panel,
+  .slide.layout-deco .text-panel.has-bg,
+  .slide.layout-deco .text-panel.no-bg {
+    padding: 4vh 5vw;
+    max-width: 100%;
+  }
+
+  /* ── Split layouts → stack vertically (image top, text below) ──── */
+  .slide.layout-split-right,
+  .slide.layout-split-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 35vh 1fr;
+    padding: 0;
+    gap: 0;
+  }
+  /* For split-right, ASCII is on the right (grid col 2) on desktop —
+     on mobile both are full width and we use grid-row instead */
+  .slide.layout-split-right .text-panel,
+  .slide.layout-split-left .text-panel {
+    grid-row: 2;
+    grid-column: 1;
+    padding: 4vh 5vw;
+    max-width: 100%;
+  }
+  .slide.layout-split-right .split-ascii-panel,
+  .slide.layout-split-left .split-ascii-panel {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  /* Fade gradient: change direction so it fades from bottom → text */
+  .slide.layout-split-right .split-ascii-panel::before,
+  .slide.layout-split-left .split-ascii-panel::before {
+    background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
+  }
+
+  /* ── Typography scaling ────────────────────────────────────────── */
+  .section-heading {
+    font-size: clamp(36px, 10vw, 72px);
+    line-height: 1.05;
+  }
+  .heading {
+    font-size: clamp(34px, 9vw, 64px);
+    line-height: 1.05;
+  }
+  .body-heading-display,
+  .body-heading--display {
+    font-size: clamp(28px, 8vw, 52px);
+    line-height: 1.1;
+  }
+  .body-heading {
+    font-size: clamp(10px, 2.4vw, 13px);
+    margin-bottom: 0.8em;
+  }
+  .body-text,
+  .body-secondary {
+    font-size: clamp(15px, 3.8vw, 19px);
+    line-height: 1.5;
+  }
+  .body-list li,
+  .bullets-list li {
+    font-size: clamp(16px, 4vw, 22px);
+    line-height: 1.4;
+    padding: 6px 0;
+  }
+  .quote {
+    font-size: clamp(22px, 6vw, 38px);
+    line-height: 1.25;
+  }
+  .attribution {
+    font-size: clamp(11px, 3vw, 14px);
+  }
+
+  /* ── UI chrome — smaller, repositioned ─────────────────────────── */
+  .label {
+    top: 2vh;
+    left: 4vw;
+    font-size: 9px;
+  }
+  .progress {
+    top: 2vh;
+    right: 4vw;
+    font-size: 9px;
+  }
+  .hint {
+    bottom: 2vh;
+    width: 92vw;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .modal-hint {
+    bottom: 4vh;
+    left: 4vw;
+    font-size: 9px;
+  }
+
+  /* ── Modal — full-width, tighter ──────────────────────────────── */
+  .modal-frame {
+    width: 94vw !important;
+    max-height: 88vh !important;
+  }
+  .modal-titlebar { padding: 8px 12px; }
+  .modal-title { font-size: 13px; }
+  .modal-body { padding: 14px; }
+  .modal-text p { font-size: 15px; line-height: 1.5; }
+  .modal-list-row { grid-template-columns: 1fr; gap: 4px; }
   .modal-grid { grid-template-columns: 1fr !important; }
+  .modal-image-grid-cell { grid-template-columns: 1fr !important; }
+
+  /* ── Settings panel — full screen on mobile ───────────────────── */
+  .settings-panel {
+    min-width: 0;
+    width: 92vw;
+    padding: 1.25rem;
+  }
+  .settings-themes {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* ── Overview — single column ─────────────────────────────────── */
+  .overview-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .overview-card { padding: 10px 12px; }
+  .overview-card-headline { font-size: 13px; }
+  .overview-head { font-size: 9px; }
+
+  /* ── References ──────────────────────────────────────────────── */
+  .references-list li { font-size: 14px; }
+  .references-url { font-size: 12px; }
 }
