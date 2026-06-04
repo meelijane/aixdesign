@@ -1855,43 +1855,51 @@
   background-size: 256px 256px;
 }
 
-/* Serif font overrides for dark/light themes */
-.theme-dark, .theme-light {
-  --font-heading: var(--serif);
-  --font-body: var(--serif);
-}
-
+/* Serif font overrides for dark/light themes — override all mono heading elements */
 .theme-dark .hero-title,
+.theme-dark .hero-subtitle,
 .theme-dark .section-heading,
-.theme-dark .body-heading,
+.theme-dark .section-secondary,
 .theme-dark .heading,
+.theme-dark .body-heading-display,
+.theme-dark .body-secondary,
+.theme-dark .body-text,
+.theme-dark .bullets-heading,
+.theme-dark .quote,
+.theme-dark .attribution,
 .theme-light .hero-title,
+.theme-light .hero-subtitle,
 .theme-light .section-heading,
-.theme-light .body-heading,
-.theme-light .heading {
+.theme-light .section-secondary,
+.theme-light .heading,
+.theme-light .body-heading-display,
+.theme-light .body-secondary,
+.theme-light .body-text,
+.theme-light .bullets-heading,
+.theme-light .quote,
+.theme-light .attribution {
   font-family: var(--serif);
   letter-spacing: -0.01em;
 }
 
-.theme-dark .hero-subtitle,
-.theme-dark .section-secondary,
-.theme-dark .body-secondary,
-.theme-dark .body-text,
-.theme-light .hero-subtitle,
-.theme-light .section-secondary,
-.theme-light .body-secondary,
-.theme-light .body-text {
+/* Bullet list items in serif themes */
+.theme-dark .body-list li,
+.theme-dark .bullets-list li,
+.theme-light .body-list li,
+.theme-light .bullets-list li {
   font-family: var(--serif);
+  letter-spacing: 0;
 }
 
-/* Clean text panel for dark/light — no blurred radial gradient needed */
-.theme-dark.bg-style-noise .slide.layout-full .text-panel,
-.theme-dark.bg-style-noise .slide.layout-deco .text-panel,
-.theme-light.bg-style-noise .slide.layout-full .text-panel,
-.theme-light.bg-style-noise .slide.layout-deco .text-panel,
-.theme-dark.bg-style-noise .slide-section.layout-full .text-panel,
-.theme-light.bg-style-noise .slide-section.layout-full .text-panel {
-  background: transparent;
+/* Clean text panel for dark/light — no blurred radial gradient needed.
+   Note: theme-* and bg-style-* classes are on .presentation, not .slide */
+.theme-dark .slide.layout-full .text-panel,
+.theme-dark .slide.layout-deco .text-panel,
+.theme-dark .slide-section.layout-full .text-panel,
+.theme-light .slide.layout-full .text-panel,
+.theme-light .slide.layout-deco .text-panel,
+.theme-light .slide-section.layout-full .text-panel {
+  background: transparent !important;
   padding: 8vh 8vw;
 }
 
