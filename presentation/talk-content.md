@@ -108,7 +108,7 @@ Hi, I'm Milly. I've been at Atlassian for four years, and I'm now the design man
 
 > Some experiences are harder to do agentically
 - Chat has been fashionable, but it's not always appropriate
-- Customers get annoyed when you try to make easy things easier [modal]
+- Customers get annoyed when you get in their way with AI [modal]
 - Different customer archetypes want more or less control
 
 [modal content -> "Hindering default actions like basic thing of column deletion. Too frustrating” - Customer quote]
@@ -189,7 +189,7 @@ Look for opportunities to ship changes to apps, tools and systems, big or small 
 
 > The power of a good design system
 - ADS, our design system, has been incredible leverage
-- We created an ADS MCP so agents could leverage our design system through various surfaces
+- We created an ADS MCP so agents could directl use our design system through various surfaces
 - Our team now includes Design Technologists, a new role for highly skilled technical designers [modal]
 
 [modal content -> design tech prios]
@@ -197,7 +197,7 @@ Look for opportunities to ship changes to apps, tools and systems, big or small 
 > We transformed content design
 - Unsurprisingly, Large Language Models are great at language-oriented design systems
 - Our well-documented content design standards have been transformed into an agent and an agentic service desk
-- Our documentation team leverage agents to audit, generate and adjust docs [modal]
+- Our documentation team now use agents to audit, generate and adjust docs [modal]
 
 [modal content -> Slack for content assistant]
 

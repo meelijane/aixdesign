@@ -477,7 +477,7 @@ export const SLIDES: Slide[] = [
       heading: "Some experiences are\nharder to do agentically",
       bullets: [
         "Chat has been fashionable, but it's not always appropriate",
-        "Customers get annoyed when you try to make easy things easier",
+        "Customers get annoyed when you get in their way with AI",
         "Different customer archetypes want more or less control",
       ],
       modalBullet: 1,
@@ -664,7 +664,7 @@ export const SLIDES: Slide[] = [
       heading: "The power of a\ngood design system",
       bullets: [
         "ADS, our design system, has been incredible leverage",
-        "We created an ADS MCP so agents could leverage our design system through various surfaces",
+        "We created an ADS MCP so agents could directl use our design system through various surfaces",
         "Our team now includes Design Technologists, a new role for highly skilled technical designers",
       ],
       modalBullet: 2,
@@ -700,7 +700,7 @@ export const SLIDES: Slide[] = [
       bullets: [
         "Unsurprisingly, Large Language Models are great at language-oriented design systems",
         "Our well-documented content design standards have been transformed into an agent and an agentic service desk",
-        "Our documentation team leverage agents to audit, generate and adjust docs",
+        "Our documentation team now use agents to audit, generate and adjust docs",
       ],
       modalBullet: 2,
     },
