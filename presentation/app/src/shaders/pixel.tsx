@@ -31,6 +31,8 @@ export interface PixelProps {
   vignetteStrength?: number;
   style?: CSSProperties;
   className?: string;
+  /** Render a single static frame (no animation loop) */
+  renderOnce?: boolean;
 }
 
 /* ─── helpers ───────────────────────────────────────────────────────── */
@@ -135,6 +137,7 @@ export default function Pixel({
   scanlineIntensity = 0.35, scanlineCount = 256,
   bloomIntensity = 0.3, vignetteStrength = 0.25,
   style, className,
+  renderOnce = false,
 }: PixelProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -293,7 +296,7 @@ export default function Pixel({
         } catch(e) {
           // silent
         }
-        raf = requestAnimationFrame(render);
+        if (!renderOnce) raf = requestAnimationFrame(render);
       }
       render();
       started = true;

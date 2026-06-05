@@ -81,6 +81,7 @@ function useKeyboard(handlers: Record<string, () => void>) {
 }
 
 export default function App() {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const isPresenterIframe = new URLSearchParams(window.location.search).has("presenter");
   const { ready, progress } = usePreloader();
 
@@ -375,6 +376,7 @@ export default function App() {
             <Ascii
               key={slide.id}
               style={{ width: "100%", height: "100%" }}
+              renderOnce={isMobile && slide.id !== "s0-hero"}
               {...slide.bg.ascii}
             />
           )}
@@ -407,6 +409,7 @@ export default function App() {
             <Ascii
               key={slide.id + "-ascii"}
               style={{ width: "100%", height: "100%" }}
+              renderOnce={isMobile && slide.id !== "s0-hero"}
               {...slide.bg.ascii}
             />
           </div>
@@ -460,6 +463,8 @@ export default function App() {
           open={modalOpen}
           onClose={() => { setModalOpen(false); setModalPage(0); }}
           page={modalPage}
+          isMobile={isMobile}
+          slideId={slide.id}
         />
       )}
 
@@ -511,11 +516,15 @@ function ModalLayer({
   open,
   onClose,
   page = 0,
+  isMobile,
+  slideId,
 }: {
   modal: Modal;
   open: boolean;
   onClose: () => void;
   page?: number;
+  isMobile: boolean;
+  slideId: string;
 }) {
   // Resolve which page to show: page 0 = base modal, page 1+ = modal.pages[n-1]
   const currentPage = page === 0 ? modal : (modal.pages?.[page - 1] ?? modal);
@@ -549,7 +558,7 @@ function ModalLayer({
 
         <div className="modal-body">
           {blocks.map((block, i) => (
-            <ModalBlockView key={i} block={block} />
+            <ModalBlockView key={i} block={block} isMobile={isMobile} slideId={slideId} />
           ))}
         </div>
 
@@ -572,7 +581,7 @@ function ModalLayer({
   );
 }
 
-function ModalBlockView({ block }: { block: ModalBlock }) {
+function ModalBlockView({ block, isMobile, slideId }: { block: ModalBlock; isMobile: boolean; slideId: string }) {
   switch (block.kind) {
     case "image":
       return (
@@ -619,7 +628,7 @@ function ModalBlockView({ block }: { block: ModalBlock }) {
         <div className={`modal-quote ${block.image ? "modal-quote--with-image" : ""}`}>
           {block.image && (
             <div className="modal-quote-image">
-              <Pixel src={block.image} alt={block.attribution ?? ""} pixelSize={2} levels={8} threshold={0.03} fit="cover" contrast={1.2} brightness={1.0} />
+              <Pixel src={block.image} alt={block.attribution ?? ""} pixelSize={2} levels={8} threshold={0.03} fit="cover" contrast={1.2} brightness={1.0} renderOnce={isMobile && slideId !== "s0-hero"} />
             </div>
           )}
           <div className="modal-quote-content">

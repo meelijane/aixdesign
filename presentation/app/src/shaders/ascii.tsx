@@ -993,6 +993,8 @@ function shouldUseAnonymousCrossOrigin(src: string): boolean {
 
 export interface AsciiProps {
 	className?: string;
+	/** Render a single static frame (no animation loop) */
+	renderOnce?: boolean;
 	style?: CSSProperties;
 	imageSrc?: string;
 	sourceMode?: AsciiSourceMode;
@@ -1081,6 +1083,7 @@ export interface AsciiProps {
 
 export default function Ascii({
 	className,
+	renderOnce = false,
 	style,
 	imageSrc,
 	sourceMode = "field",
@@ -1659,10 +1662,12 @@ export default function Ascii({
 			gl.uniform1f(u.pixelRatio, dpr);
 			gl.uniform1f(u.time, elapsedTimeRef.current);
 			gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-			animRef.current = requestAnimationFrame(render);
+			if (!renderOnce) {
+				animRef.current = requestAnimationFrame(render);
+			}
 		};
 
-		animRef.current = requestAnimationFrame(render);
+		renderOnce ? render(0) : (animRef.current = requestAnimationFrame(render));
 
 		return () => {
 			disposed = true;
