@@ -1511,6 +1511,7 @@ export default function Ascii({
 		let currentImageSrc: string | undefined;
 		let currentSourceMode: typeof initialProps.sourceMode | null = null;
 		let disposed = false;
+		let renderFrame: (timeMs?: number) => void = () => {};
 		const applyImage = (src: string | undefined, mode: typeof initialProps.sourceMode) => {
 			currentImageSrc = src;
 			currentSourceMode = mode;
@@ -1524,11 +1525,13 @@ export default function Ascii({
 					if (currentImageSrc !== src) return;
 					gl.activeTexture(gl.TEXTURE0);
 					setTextureFromSource(gl, sourceTexture, image);
+					if (renderOnce) renderFrame(0);
 				};
 				image.src = src;
 			} else {
 				gl.activeTexture(gl.TEXTURE0);
 				setTextureFromSource(gl, sourceTexture, createEmptyTexture());
+				if (renderOnce) renderFrame(0);
 			}
 		};
 		applyImage(initialProps.imageSrc, initialProps.sourceMode);
@@ -1667,6 +1670,7 @@ export default function Ascii({
 			}
 		};
 
+		renderFrame = render;
 		renderOnce ? render(0) : (animRef.current = requestAnimationFrame(render));
 
 		return () => {
