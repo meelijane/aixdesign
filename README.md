@@ -4,6 +4,8 @@ A conference presentation exploring lessons from the AI frontier — how design 
 
 ## Talk structure
 
+**Canonical source:** `presentation/talk.md` (slides + speaker notes). Edit this file first, then sync `presentation/app/src/slides.ts`.
+
 Five sections, three points each:
 
 1. **Garbage in, garbage out** — organisational context, personal context, specificity & iteration
