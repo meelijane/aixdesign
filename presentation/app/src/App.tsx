@@ -445,8 +445,9 @@ export default function App() {
 
       {/* Hint bar */}
       <div className="hint">
-        SPACE / → next &nbsp;·&nbsp; ← prev &nbsp;·&nbsp; M modal &nbsp;·&nbsp; F fullscreen &nbsp;·&nbsp; N notes &nbsp;·&nbsp; O overview
+        SPACE / → next &nbsp;·&nbsp; ← prev &nbsp;·&nbsp; M modal &nbsp;·&nbsp; F fullscreen &nbsp;·&nbsp; N notes &nbsp;·&nbsp; O overview &nbsp;·&nbsp; P presenter
       </div>
+      <button className="presenter-btn" onClick={openNotesWindow}>Presenter mode</button>
 
       {/* Inline notes overlay */}
       {showNotes && slide.notes && (
