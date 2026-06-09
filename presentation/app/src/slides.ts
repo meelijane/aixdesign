@@ -1,7 +1,7 @@
 // Slide content for "Lessons from the AI frontier"
-// Synced with presentation/talk-content.md (the canonical source of truth).
+// Synced with presentation/talk.md (the canonical source of truth).
 //
-// Structure derived from talk-content.md:
+// Structure derived from talk.md:
 //   1. HERO
 //   2. Overview (5-line list of section names)
 //   3. Five sections, each with:
